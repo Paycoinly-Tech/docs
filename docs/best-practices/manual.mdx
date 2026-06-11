@@ -1,0 +1,29 @@
+---
+sidebar_label: Manual Setup
+---
+
+# Best Practices for Manual Setup
+
+This page describes a streamlined approach to manual setup, without making your backend complicated going forth and back for the steps described in [Manual Setup](/docs/integrations/manual.mdx) guide.
+
+### Step 1
+
+Make a **GET** endpoint on your backend which has the following implementation:
+
+  - [Request a payment token](/docs/api-reference/payment-token)
+
+  - Redirect to the following route using that token, which shows PayCoinly payment UI
+
+```
+  https://app.paycoinly.xyz/pay?token={token}
+```
+
+### Step 2
+
+Connect a button in your customer page to **Step 1** endpoint.
+
+```HTML
+<button onclick="window.open('https://step-1-endpoint', 'Pay with PayCoinly', 'width=800,height=550,left=200,top=100');">
+  <img src="https://app.paycoinly.xyz/logo/light.svg" style="width: 150px;" />
+</button>
+```
