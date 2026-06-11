@@ -14,7 +14,7 @@ Should be a **POST** request.
 
 To see `payment-id`, navigate to the corresponding payment in the **Paycoinly dashboard** > **Payments** - the ID will be visible in your browser's URL.
 
-![Docusaurus logo](/img/docusaurus.png)
+![image](./img/token-1.png)
 
 ### Headers
 
@@ -46,12 +46,8 @@ You can customize the request body to fit your specific business requirements, r
 Use this token to render Paycoinly payment UI on your customers' side.
 
 ```
-https://app.paycoinly.xyz/v1/pay/{payment-id}
+https://app.paycoinly.xyz/pay?token={token}
 ```
-
-You can see the `payment-id` in browser URL when a payment is selected in the dashboard.
-
-![Docusaurus logo](/img/docusaurus.png)
 
 ### Example
 
