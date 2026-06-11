@@ -18,7 +18,7 @@ Before you can use manual integration, ensure you have the following:
 
 ### Add a webhook to your backend
 
-PayCoinly will call this endpoint when the payment is successfully completed. The request body contains a JSON object you define as [`metadata`](#request-body-used-to-generate-a-payment-token) when generating a payment token in the [next step](#make-a-request-to-generate-a-payment-token).
+PayCoinly will call this endpoint when the payment is successfully completed. The request body contains a JSON object you define as [`metadata`](/docs/api-reference/payment-token#body) when generating a payment token in the [next step](#make-a-request-to-get-a-payment-token).
 The webhook will receive a request containing `x-api-key` header. Please check [this page](/docs/appendix/api-key) to get API key in your Paycoinly dashboard.
 
 - The webhook URL should be the one you set in **Settings** > **Integration** > **Callback URL** in your payment.
