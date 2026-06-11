@@ -67,7 +67,7 @@ function after_handle_payment($payload, $mode) {
 
 This filter is used to calculate price of the order before Paycoinly shows payment UI to your customers.
 It is used for Wordpress payments only.
-Please refer to [Wordpress Integration](/docs/integrations/wordpress) page to get more understanding and workflow of it.
+Please refer to [Wordpress Integration](/docs/integrations/wordpress#place-paycoinly-ui) page to get more understanding and workflow of it.
 
 ```php title='Example'
 add_filter('paycoinly_order_price', 'get_order_price', $order_id);
@@ -94,4 +94,4 @@ You can use third-party Wordpress plugins such as
 - [WPCode](https://wordpress.org/plugins/insert-headers-and-footers/)
 - [Code Snippets](https://wordpress.org/plugins/code-snippets/)
 
-to easily add action and filter hooks in the above without modifying your files or writing a full custom plugin.
+to easily add hooks into the above actions and filters without modifying your files or writing a full custom plugin.

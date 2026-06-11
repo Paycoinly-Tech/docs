@@ -1,0 +1,87 @@
+# Payment Token Generation
+
+
+Your backend should call this endpoint to generate a payment token, which will be used to display Paycoinly payment UI on your customers' side as described in [this page](/docs/integrations/manual#add-a-payment-ui-to-your-frontend).
+
+
+### Endpoint
+
+```
+https://app.paycoinly.xyz/v1/pay/{payment-id}
+```
+
+Should be a **POST** request.
+
+To see `payment-id`, navigate to the corresponding payment in the **Paycoinly dashboard** > **Payments** - the ID will be visible in your browser's URL.
+
+![Docusaurus logo](/img/docusaurus.png)
+
+### Headers
+
+```json
+{ "x-api-key": "<api key>", "content-type": "application/json" }
+```
+
+The request should include `x-api-key` in its header.
+Please check [this page](/docs/appendix/api-key) to get API key in your Paycoinly dashboard.
+
+### Body
+
+You can customize the request body to fit your specific business requirements, referring to the table described in the below.
+
+| Field         | Mandatory | Default | Description                                                                                                                         |
+| ------------- | --------- | ------- | ----------------------------------------------------------------------------------------------------------------------------------- |
+| price         | Yes       |         | Service price - a numeric value representing the cost of the service                                                                |
+| currency      |           | USD     | Currency in which `price` is specified. Refer to [currency list](/docs/appendix/currency-list) page.                                |
+| localCurrency |           | USD     | `price` will be shown in local currency on user's side. Refer to [currency list](/docs/appendix/currency-list) page.                |
+| metadata      |           |         | [Callback URL](/docs/integrations/manual#add-a-webhook-to-your-backend) will receive a request with this JSON value set in its body |
+
+
+### Response
+
+```json
+{ "token": "<value>" }
+```
+
+Use this token to render Paycoinly payment UI on your customers' side.
+
+```
+https://app.paycoinly.xyz/v1/pay/{payment-id}
+```
+
+You can see the `payment-id` in browser URL when a payment is selected in the dashboard.
+
+![Docusaurus logo](/img/docusaurus.png)
+
+### Example
+
+Below is an example of how to make a request to the endpoint using Node.js.
+
+```javascript title="In your backend"
+async function generatePaymentToken() {
+  const response = await fetch('https://app.paycoinly.xyz/v1/pay/{payment-id}', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'x-api-key': '{x-api-key}'
+    },
+    body: JSON.stringify({
+      price: 100.00,
+      currency: 'USD',
+      localCurrency: 'EUR',
+      metadata: {
+        orderId: 'abc123',
+        customerId: 'user789'
+      }
+    })
+  });
+
+  if (!response.ok) {
+    throw new Error(`HTTP error! Status: ${response.status}`);
+  }
+
+  const { token } = await response.json();
+
+  return token;
+}
+```

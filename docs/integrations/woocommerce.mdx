@@ -4,8 +4,9 @@ sidebar_label: Woocommerce
 
 # Woocommerce Integration
 
-This page explains how to seamlessly integrate Paycoinly with your WooCommerce store using the official [Paycoinly plugin](). With this approach, there's no need for manual setup, such as adding webhooks or embedding Paycoinly UI elements - everything is fully automated and handled directly through the plugin.
-Configurations you make here will be applied in checkout page in your store.
+This page explains how to seamlessly integrate Paycoinly with your Woocommerce store using the official [Paycoinly plugin](). With this approach, there's no need for manual setup, such as adding webhooks or embedding Paycoinly UI elements - everything is fully automated and handled directly through the plugin.
+
+Payments triggered when your customers click **Place order** button on the checkout page are executed with the configurations you make here.
 
 ### Prerequisites
 
@@ -15,9 +16,9 @@ Before continue, ensure you have the following:
 
 ![Docusaurus logo](/img/docusaurus.png)
 
-### Configure Woocommerce option
+### Configure Woocommerce options
 
-Navigate to **Payments** > **Settings** > **Integration**, select **WordPress or WooCommerce**, and enter the domain of your WooCommerce store.
+Navigate to **Payments** > **Settings** > **Integration**, select **WordPress or WooCommerce**, and enter the domain of your Woocommerce store.
 
 ![Docusaurus logo](/img/docusaurus.png)
 
@@ -31,17 +32,17 @@ Navigate to **Payments** > **Settings** > **Integration**, select **WordPress or
 
 ![Docusaurus logo](/img/docusaurus.png)
 
-- Check **Activate Paycoinly Gateway in Woocommerce** and provide **API Key**. Please check [how to get API key](/docs/appendix/api-key) in your Paycoinly dashboard.
+- Check **Activate Paycoinly Gateway in Woocommerce** and provide **API Key**. Please check [this page](/docs/appendix/api-key) to get API key in your Paycoinly dashboard.
 
 - Select a payment in **Payments** section. All customer payments from your store will be routed to it.
 
 :::info
 If you see some payments disabled, it's because they are not eligible for your store.
-You can select a payment in Paycoinly plugin which satisfies [prerequisites](#prerequisites) and has the correct [Woocommerce options](#configure-woocommerce-option) configured.
+You can select a payment in Paycoinly plugin which satisfies [prerequisites](#prerequisites) and has the correct [Woocommerce options](#configure-woocommerce-options) configured.
 :::
 
 ### Plugin actions and filters
 
-You can leverage actions and filters provided from the Paycoinly plugin to extend its functionalities on your own when processing payments.
+You can leverage actions and filters provided from the Paycoinly plugin to extend its functionalities on your own when your platform processes payments.
 Please check [this page](/docs/appendix/wordpress-plugin-actions-and-filters) for more information.
 
