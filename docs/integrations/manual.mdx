@@ -1,0 +1,146 @@
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+import Premium from '@site/src/components/premium'
+
+# Manual Setup
+
+Manual Integration enables developers to connect Paycoinly payment services to their platform using a custom-built integration approach.
+
+### Prerequisites
+
+Before you can use manual integration, ensure you have the following:
+
+- **How would you like to receive customer information?** is set to either **I Want To Know Who Paid** or **My Customers Can Claim Their Money Back** in **Payments** > **Settings** > **Basic**
+
+- **On which platform is your service running?** is set to **None** in **Payments** > **Settings** > **Integration**
+
+![Docusaurus logo](/img/docusaurus.png)
+
+### Add a webhook to your backend
+
+PayCoinly will call this endpoint when the payment is successfully completed. The request body contains a JSON object you define as [`metadata`](#request-body-used-to-generate-a-payment-token) when generating a payment token in the [next step](#make-a-request-to-generate-a-payment-token).
+The webhook will receive a request containing `x-api-key` header. Please check [how to get API key](/docs/appendix/api-key) in your Paycoinly dashboard.
+
+- The webhook URL should be the one you set in **Settings** > **Integration** > **Callback URL** in your payment.
+
+![Docusaurus logo](/img/docusaurus.png)
+
+- The webhook should be a **POST** route.
+
+:::tip[Security Tip]
+To secure this webhook and prevent unauthorized or arbitrary access
+- Validate that the `x-api-key` header in the incoming request exactly matches with the above value.
+- Only allow the route to be executed if this API key is correct. Otherwise, reject the request.
+:::
+
+### Make a request to get a payment token
+
+In your backend, make a request to the following endpoint to generate a payment token.
+
+```
+https://app.paycoinly.xyz/v1/pay/{payment-id}
+```
+
+You can see the `payment-id` in browser URL when a payment is selected in the dashboard.
+
+![Docusaurus logo](/img/docusaurus.png)
+
+- It should be a **POST** request.
+- The request should include `x-api-key` header.
+
+You can customize the request body to fit your specific business requirements, referring to the table described in the below.
+
+#### Request body used to generate a payment token
+
+| Field         | Mandatory | Default | Description                                                                                                          |
+| ------------- | --------- | ------- | -------------------------------------------------------------------------------------------------------------------- |
+| price         | Yes       |         | Service price - a numeric value representing the cost of the service                                                 |
+| currency      |           | USD     | Currency in which `price` is specified. Refer to [currency list](/docs/appendix/currency-list) page.                 |
+| localCurrency |           | USD     | `price` will be shown in local currency on user's side. Refer to [currency list](/docs/appendix/currency-list) page. |
+| metadata      |           |         | A JSON value which will be included in the payload when [callback url](#add-a-webhook-to-your-backend) is invoked    |
+
+
+Here you can see an example code in Node.
+
+```javascript title="In your backend"
+async function generatePaymentToken() {
+  const response = await fetch('https://app.paycoinly.xyz/v1/pay/{payment-id}', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'x-api-key': '{x-api-key}'
+    },
+    body: JSON.stringify({
+      price: 100.00,
+      currency: 'USD',
+      localCurrency: 'EUR',
+      metadata: {
+        orderId: 'abc123',
+        customerId: 'user789'
+      }
+    })
+  });
+
+  if (!response.ok) {
+    throw new Error(`HTTP error! Status: ${response.status}`);
+  }
+
+  const { token } = await response.json();
+
+  return token;
+}
+```
+
+### Add a payment UI to your frontend
+
+Use the following URL to show Paycoinly payment page.
+
+```
+https://app.paycoinly.xyz/pay?token={token}
+```
+
+where `token` is the payment token obtained from [the above step](#make-a-request-to-get-a-payment-token).
+
+Here is a sample HTML snippet that you can use to embed the payment UI.
+
+<Tabs>
+  <TabItem value="light" label="Light">
+    <button style={{ padding: '.5em', backgroundColor: 'white', borderRadius: '.5em', border: '2px solid gray', marginBottom: '1em' }}>
+      <img src="https://app.paycoinly.xyz/logo/light.svg" style={{width: '7em'}} />
+    </button>
+    ```HTML
+    <button onclick="window.open('https://app.paycoinly.xyz/pay?token={token}', 'Pay with PayCoinly', 'width=800,height=550,left=200,top=100');">
+      <img src="https://app.paycoinly.xyz/logo/light.svg" style="width: 150px;" />
+    </button>
+    ```
+  </TabItem>
+  <TabItem value="dark" label="Dark">
+    <button style={{ padding: '.5em', backgroundColor: '#222', borderRadius: '.5em', border: '2px solid gray', marginBottom: '1em' }}>
+      <img src="https://app.paycoinly.xyz/logo/dark.svg" style={{width: '7em'}} />
+    </button>
+    ```HTML
+    <button onclick="window.open('https://app.paycoinly.xyz/pay?token={token}', 'Pay with PayCoinly', 'width=800,height=550,left=200,top=100');">
+      <img src="https://app.paycoinly.xyz/logo/dark.svg" style="width: 150px;" />
+    </button>
+    ```
+  </TabItem>
+</Tabs>
+
+### Receive payment success event in your frontend <Premium />
+
+Add the following code to your frontend to receive payment success event.
+
+```javascript
+window.addEventListener('message', (event) => {
+  if (event.origin !== 'https://app.paycoinly.xyz') {
+    return;
+  }
+  if (event.data.type === 'PAYCOINLY_PAYMENT_COMPLETE') {
+    console.log(event.data.payload);
+  }
+});
+```
+
+### Best practices
+
+[This section]('/docs/best-practices/manual-integration') also describes best practices for implementing manual integration.

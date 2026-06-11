@@ -1,0 +1,97 @@
+---
+toc_max_heading_level: 4
+---
+
+# Paycoinly Wordpress Plugin Actions and Filters
+
+The Paycoinly plugin provides several filters and actions which allow you to extend and customize its payment processing functionality to meet your specific requirements.
+
+### Glossary
+
+- **Woocommerce payment** refers to a payment initiated by clicking the **Place Order** button on the Woocommerce checkout page.
+- **Wordpress payment** refers to a payment triggered via the `paycoinly` shortcode on Wordpress page other than the Woocommerce checkout page.
+
+### Actions
+
+#### paycoinly_before_handle_wc_payment
+
+This action is triggered just before your platform records customer's Paycoinly payment in the callback endpoint.
+It is used for Woocommerce payments only.
+
+```php
+add_action('paycoinly_before_handle_wc_payment', 'before_handle_wc_payment');
+
+function before_handle_wc_payment($payload) {
+  // invoke your custom operation
+  print_r($payload);
+  echo $payload['order_id'];
+  echo $payload['user_id'];
+  echo 'woocommerce is going to record the payment';
+}
+```
+
+| Arg     | Type                                               | Description                                                                                                                                                            |
+| ------- | -------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| payload | `array('order_id' => string, 'user_id' => string)` | Paycoinly invokes the callback endpoint, including the following data in the request body. `order_id` and `user_id` are corresponding values in your Woocommerce store |
+
+#### paycoinly_handle_payment
+
+This action is triggered just after your platform records customer's Paycoinly payment in the callback endpoint.
+It is used for both Wordpress and Woocommerce payments.
+
+```php
+add_action('paycoinly_handle_payment', 'after_handle_payment');
+
+function after_handle_payment($payload, $mode) {
+  // invoke your custom operation
+  print_r($payload);
+  echo $payload['order_id'];
+  echo $payload['user_id'];
+
+  if ($mode == 'wc') {
+    echo 'woocommerce recorded a payment';
+  } else {
+    echo 'wordpress recorded a payment';
+  }
+}
+```
+
+| Arg     | Type                                               | Description                                                                                                                                                            |
+| ------- | -------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| payload | `array('order_id' => string, 'user_id' => string)` | Paycoinly invokes the callback endpoint, including the following data in the request body. `order_id` and `user_id` are corresponding values in your Woocommerce store |
+| wc      | string                                             | `wc` if the payment is for Woocommerce, otherwise `wp`                                                                                                                 |
+
+### Filters
+
+#### paycoinly_order_price
+
+This filter is used to calculate price of the order before Paycoinly shows payment UI to your customers.
+It is used for Wordpress payments only.
+Please refer to [Wordpress Integration](/docs/integrations/wordpress) page to get more understanding and workflow of it.
+
+```php title='Example'
+add_filter('paycoinly_order_price', 'get_order_price', $order_id);
+
+function get_order_price($order_id) {
+  // calculate the price based on $order_id
+  if ($order_id == 'basic') {
+    return 10;
+  } else if ($order_id == 'pro') {
+    return 30;
+  } else if ($order_id == 'enterprise') {
+    return 50;
+  }
+}
+```
+
+| Arg      | Type   | Description                                                                              |
+| -------- | ------ | ---------------------------------------------------------------------------------------- |
+| order_id | string | Data on which you want to calculate the price based. `order_id` is passed from shortcode |
+
+### Best practices
+
+You can use third-party Wordpress plugins such as
+- [WPCode](https://wordpress.org/plugins/insert-headers-and-footers/)
+- [Code Snippets](https://wordpress.org/plugins/code-snippets/)
+
+to easily add action and filter hooks in the above without modifying your files or writing a full custom plugin.

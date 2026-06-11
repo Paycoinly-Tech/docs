@@ -1,0 +1,47 @@
+---
+sidebar_label: Woocommerce
+---
+
+# Woocommerce Integration
+
+This page explains how to seamlessly integrate Paycoinly with your WooCommerce store using the official [Paycoinly plugin](). With this approach, there's no need for manual setup, such as adding webhooks or embedding Paycoinly UI elements - everything is fully automated and handled directly through the plugin.
+Configurations you make here will be applied in checkout page in your store.
+
+### Prerequisites
+
+Before continue, ensure you have the following:
+
+- **How would you like to receive customer information?** is set to either **I Want To Know Who Paid** or **My Customers Can Claim Their Money Back** in **Payments** > **Settings** > **Basic**
+
+![Docusaurus logo](/img/docusaurus.png)
+
+### Configure Woocommerce option
+
+Navigate to **Payments** > **Settings** > **Integration**, select **WordPress or WooCommerce**, and enter the domain of your WooCommerce store.
+
+![Docusaurus logo](/img/docusaurus.png)
+
+### Install and configure Paycoinly plugin
+
+- Install Paycoinly plugin in your Wordpress admin dashboard.
+
+![Docusaurus logo](/img/docusaurus.png)
+
+- Navigate to Paycoinly in Woocommerce Payments page.
+
+![Docusaurus logo](/img/docusaurus.png)
+
+- Check **Activate Paycoinly Gateway in Woocommerce** and provide **API Key**. Please check [how to get API key](/docs/appendix/api-key) in your Paycoinly dashboard.
+
+- Select a payment in **Payments** section. All customer payments from your store will be routed to it.
+
+:::info
+If you see some payments disabled, it's because they are not eligible for your store.
+You can select a payment in Paycoinly plugin which satisfies [prerequisites](#prerequisites) and has the correct [Woocommerce options](#configure-woocommerce-option) configured.
+:::
+
+### Plugin actions and filters
+
+You can leverage actions and filters provided from the Paycoinly plugin to extend its functionalities on your own when processing payments.
+Please check [this page](/docs/appendix/wordpress-plugin-actions-and-filters) for more information.
+
