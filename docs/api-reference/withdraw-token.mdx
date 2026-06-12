@@ -3,7 +3,7 @@ import Premium from '@site/src/components/premium'
 # Withdrawl Token Generation
 
 For your customers to withdraw their balance, your backend should call this endpoint to generate a withdrawl token, which is used to show withdrawl UI to your customer.
-You need to subscribe to <Premium /> to use this API.
+You need to subscribe to<Premium /> to use this API.
 
 For more information of customer withdrawl steps, please refer to [Withdrawl Integration](/docs/integrations/withdraw.mdx) page.
 
@@ -48,7 +48,7 @@ The meaning of each field is provided in the table below.
 | chainId | Chain ID of the token                                                |
 | symbol  | Symbol of the token                                                  |
 
-`chainId` and `symbol` should be the one you retrieved from [Getting Customer Balances API](/docs/api-reference/get-customer-balance.mdx).
+`chainId` and `symbol` should be the one you retrieved from [Getting Customer Balances API](/docs/api-reference/get-customer-balance#response).
 
 :::tip[Security Tip]
 - Regarding `user` field, it is recommended to use hashed format to prevent enumeration of user ids.
@@ -56,7 +56,7 @@ The meaning of each field is provided in the table below.
 :::
 
 :::info[]
-You can't provide greater value than the `amount` returned from [Getting Customer Balances API](/docs/api-reference/get-customer-balance.mdx).
+You can't provide greater value than the `amount` returned from [Getting Customer Balances API](/docs/api-reference/get-customer-balance#response).
 :::
 
 ### Response

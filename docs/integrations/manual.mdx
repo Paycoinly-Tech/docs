@@ -8,11 +8,11 @@ import Premium from '@site/src/components/premium'
 
 # Manual Setup
 
-Manual Integration enables developers to connect Paycoinly payment services to their platform using a custom-built integration approach.
+Manual Integration enables developers to connect Paycoinly payment services to their platform using a custom-built integration approach, allowing your users to make payments through Paycoinly and have your platform record them.
 
 ### Prerequisites
 
-Before you can use manual integration, ensure you have the following:
+Before you can start manual integration, ensure you have the following:
 
 - **How would you like to receive customer information?** is set to either **I Want To Know Who Paid** or **My Customers Can Claim Their Money Back** in **Payments** > **Settings** > **Basic**
 
@@ -37,7 +37,7 @@ To secure this webhook and prevent unauthorized or arbitrary access
 - Only allow the route to be executed if this API key is correct. Otherwise, reject the request.
 :::
 
-### Make a request to get a payment token
+### Get a payment token
 
 In your backend, make a request to [Payment Token Generation API](/docs/api-reference/payment-token) to generate a payment token, which will be used in the next step.
 

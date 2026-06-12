@@ -1,0 +1,61 @@
+import Premium from '@site/src/components/premium'
+
+# Making Withdrawl Request
+
+For your customers to withdraw their balance, your backend should call this endpoint to generate a withdrawl request, which will be then showing in Paycoinly withdraw UI, allowing your customers to finalize their withdrawl with it.
+You need to subscribe to<Premium /> to use this API.
+
+For more information of customer withdrawl steps, please refer to [Withdrawl Integration](/docs/integrations/withdraw.mdx) page.
+
+### Endpoint
+
+```
+https://app.paycoinly.xyz/v1/withdraw
+```
+
+It is a **POST** request.
+
+### Headers
+
+```json
+{ "x-api-key": "<api key>", "content-type": "application/json" }
+```
+
+The request should include `x-api-key` in its header.
+Please check [this page](/docs/appendix/api-key) to get API key in your Paycoinly dashboard.
+
+### Body
+
+You can see the syntax of the request body below.
+
+```typescript
+{
+  chainId: string
+  symbol: string
+  wallet: string
+  currency?: string | null
+  amount: string
+  user: string
+}
+```
+
+The meaning of each field is provided in the table below.
+
+| Name     | Optional | Description                                                                                                                                        |
+| -------- | -------- | -------------------------------------------------------------------------------------------------------------------------------------------------- |
+| chainId  |          | Chain ID of the token                                                                                                                              |
+| symbol   |          | Symbol of the token                                                                                                                                |
+| wallet   |          | Wallet address the user will withdraw to                                                                                                           |
+| amount   |          | Token amount in wei (or smallest unit) if `currency` is not specified, otherwise withdraw amount in `currency`                                     |
+| currency | Yes      | If not specified, the withdrawal `amount` is in the smallest unit of the token. Otherwise, the withdrawal `amount` is in the specified `currency`. |
+| user     |          | Id of your customer in your system who is performing the withdrawal                                                                                |
+
+For values of each field, please refer to [Withdrawl Integration](/docs/integrations/withdraw.mdx) page.
+
+### Response
+
+| Status Code | Description                                                                  |
+| ----------- | ---------------------------------------------------------------------------- |
+| 200         | Success                                                                      |
+| 400         | Possible response: `No Token Found` or `Withdraw amount exceeds the balance` |
+| 403         | `You are not a premium user`                                                 |
