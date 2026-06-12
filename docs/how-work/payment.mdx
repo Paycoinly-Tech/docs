@@ -1,0 +1,70 @@
+---
+sidebar_label: Payment
+---
+
+# How Does Payment Flow Works With Your System
+
+The flow described on this page serves as the foundation for all payment integrations - [Manual Setup](/docs/integrations/manual), [Woocommerce](/docs/integrations/woocommerce) and [Wordpress](/docs/integrations/wordpress). Each integration is built upon the core workflow and logic outlined here.
+
+Here are some elements showing in the diagram with links to detailed information.
+
+- [Best practice - step 1](/docs/best-practices/manual#step-1)
+- [Payment Token Generation API](/docs/api-reference/payment-token.mdx)
+- [Callback](/docs/integrations/manual#add-a-webhook-to-your-backend)
+- [Notify success](/docs/integrations/manual#receive-payment-success-event-in-your-frontend)
+
+```mermaid
+sequenceDiagram
+  autonumber
+
+  actor user as User
+  participant browser as Browser
+  participant backend as Your System
+  participant paycoinly as Paycoinly
+  
+  user->>browser: Click Pay button
+
+  rect rgb(255, 191, 191)
+
+  note right of browser: Best practice - step 1
+
+  browser->>backend: order id
+
+  backend->>backend: Determine price using order id
+
+  rect rgb(191, 223, 255)
+
+  note right of backend: Payment Token Generation API
+
+  backend->>paycoinly: price
+
+  paycoinly->>backend: payment token
+
+  end
+
+  backend->>backend: Determine Paycoinly payment UI url using payment token
+
+  backend->>browser: Paycoinly payment UI url
+
+  end
+
+  browser->>paycoinly: Navigate to Paycoinly payment UI
+
+  paycoinly->>paycoinly: Process the payment
+
+  rect rgb(255, 191, 255)
+
+  note right of backend: Callback
+
+  paycoinly->>backend: Trigger callback URL with order id
+
+  backend->>backend: Record the payment
+
+  end
+  
+  rect rgb(191, 255, 200)
+
+  paycoinly->>browser: Notify success
+
+  end
+```

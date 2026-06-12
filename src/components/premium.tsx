@@ -1,7 +1,14 @@
 import { FaCrown } from "react-icons/fa6";
 
 const Premium = () => (
-  <span style={{ display: "inline", alignItems: "center", color: "#ffc400" }}>
+  <span
+    style={{
+      display: "inline",
+      alignItems: "center",
+      color: "#ffc400",
+      marginLeft: "0.5rem",
+    }}
+  >
     <FaCrown />
     &nbsp;Premium
   </span>

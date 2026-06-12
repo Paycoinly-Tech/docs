@@ -6,13 +6,19 @@ sidebar_label: Manual Setup
 
 This page describes a streamlined approach to align steps described in [Manual Setup](/docs/integrations/manual.mdx) guide, without making your backend complicated going forth and back.
 
+Please see [How Does Payment Flow Works With Your System](/docs/how-work/payment.mdx) to get more context of it.
+
 ### Step 1
 
-Make a **GET** endpoint on your backend which has the following implementation:
+Make a **GET** endpoint on your backend which has the following implementation in it:
 
-  - [Request a payment token](/docs/api-reference/payment-token)
+  - Accept **order ID** (or service ID) query param.
 
-  - Redirect to the following route using that token, which shows PayCoinly payment UI
+  - Determine price from **order id**.
+
+  - [Request a payment token](/docs/api-reference/payment-token#body) with the price included in its body.
+
+  - Redirect to the following route using that token, which shows PayCoinly payment UI.
 
 ```
   https://app.paycoinly.xyz/pay?token={token}
@@ -20,10 +26,15 @@ Make a **GET** endpoint on your backend which has the following implementation:
 
 ### Step 2
 
-Connect a button in your customer page to **Step 1** endpoint.
+Connect a button in your customer page to **Step 1** endpoint with **order ID** query param included.
 
 ```HTML
-<button onclick="window.open('https://step-1-endpoint', 'Pay with PayCoinly', 'width=800,height=550,left=200,top=100');">
+<button onclick="window.open('https://your-system-domain/step-1-endpoint?orderId=premium-plan', 'Pay with PayCoinly', 'width=800,height=550,left=200,top=100');">
   <img src="https://app.paycoinly.xyz/logo/light.svg" style="width: 150px;" />
 </button>
 ```
+
+:::info
+By sending **order ID** query parameter to **Step 1** endpoint and having your backend determine the price from it,
+you can hide the price logic, making the integration secure and protected against manipulation through arbitrary amount in the browser.
+:::
