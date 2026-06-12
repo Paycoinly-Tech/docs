@@ -81,7 +81,7 @@ You need to decide price from `order_id` by hooking into [`paycoinly_order_price
 
 :::tip[Security Tip]
 It is not safe to use `order_id` as direct price data when calling the shortcode, since a malicious user could manipulate it to pass any arbitrary amount.
-To ensure the integrity of your payments, always pass the order ID (or service ID) from the shortcode, and have your backend determine the correct price for that order by using the[`paycoinly_order_price`](/docs/appendix/wordpress-plugin-actions-and-filters#paycoinly_order_price) filter.
+To ensure the integrity of your payments, always pass the order ID (or service ID) from the shortcode, and have your backend determine the correct price for that order by using the [`paycoinly_order_price`](/docs/appendix/wordpress-plugin-actions-and-filters#paycoinly_order_price) filter.
 :::
 
 You can see an example usage in the below.
