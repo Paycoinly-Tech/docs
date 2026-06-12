@@ -1,0 +1,60 @@
+# Getting Customer Token Balances
+
+This endpoint returns a list of token balances of your customers in your Paycoinly account.
+
+:::tip
+The response is a balance of token balances belongs to your customers, not you.
+:::
+
+### Endpoint
+
+```
+https://app.paycoinly.xyz/v1/withdraw/balance
+```
+
+It is a **GET** request.
+
+### Query Parameters
+
+| Name     | Optional | Default | Description                                                                                                                              |
+| -------- | -------- | ------- | ---------------------------------------------------------------------------------------------------------------------------------------- |
+| currency | Yes      | USD     | `value` in response is calculated in the specified currency. See [Currency List](/docs/appendix/currency-list.mdx) for available values. |
+
+### Headers
+
+```json
+{ "x-api-key": "<api key>", "content-type": "application/json" }
+```
+
+The request should include `x-api-key` in its header.
+Please check [this page](/docs/appendix/api-key) to get API key in your Paycoinly dashboard.
+
+### Response
+
+Object array, whose syntax is described in the below.
+
+```typescript title='Syntax'
+{
+  amount: string;
+  value: number;
+  currency: string;
+  token: {
+    chainId: number;
+    symbol: string;
+    address: string | null;
+    decimals: number;
+}[]
+```
+
+You can see the meaning of each field in the table below.
+
+| Name     | Description                                                              |
+| -------- | ------------------------------------------------------------------------ |
+| amount   | Token amount in wei (or smallest unit)                                   |
+| value    | Value of the token `amount` in `currency` specified as a query parameter |
+| currency | Currency of `value` in the response                                      |
+| chainId  | Chain ID of the token                                                    |
+| symbol   | Symbol of the token                                                      |
+| address  | Address of the token or `null` if it is the native token of its chain    |
+| decimals | Decimals of the token                                                    |
+
