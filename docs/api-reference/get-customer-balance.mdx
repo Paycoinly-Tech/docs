@@ -1,10 +1,8 @@
-# Getting Customer Token Balances
+# Getting Customer Balances
 
-This endpoint returns a list of token balances of your customers in your Paycoinly account.
+This endpoint returns a list of your customers' balance per coin, which will be used by [Withdrawl Token Generation API](/docs/api-reference/withdraw-token).
 
-:::tip
-The response is a balance of token balances belongs to your customers, not you.
-:::
+For more information of customer withdrawl steps, please refer to [Withdrawl Integration](/docs/integrations/withdraw.mdx) page.
 
 ### Endpoint
 
@@ -48,13 +46,12 @@ Object array, whose syntax is described in the below.
 
 You can see the meaning of each field in the table below.
 
-| Name     | Description                                                              |
-| -------- | ------------------------------------------------------------------------ |
-| amount   | Token amount in wei (or smallest unit)                                   |
-| value    | Value of the token `amount` in `currency` specified as a query parameter |
-| currency | Currency of `value` in the response                                      |
-| chainId  | Chain ID of the token                                                    |
-| symbol   | Symbol of the token                                                      |
-| address  | Address of the token or `null` if it is the native token of its chain    |
-| decimals | Decimals of the token                                                    |
-
+| Name     | Description                                                                                 |
+| -------- | ------------------------------------------------------------------------------------------- |
+| amount   | Coin amount in wei (or smallest unit)                                                       |
+| value    | Value of the coin `amount` in `currency` specified as a query parameter                     |
+| currency | Currency of `value` in the response                                                         |
+| chainId  | Chain ID of the coin                                                                        |
+| symbol   | Symbol of the coin                                                                          |
+| address  | Address of the coin or `null` if it is the native coin of its chain like **ETH** or **BNB** |
+| decimals | Decimals of the coin                                                                        |

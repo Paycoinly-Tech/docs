@@ -1,7 +1,7 @@
 # Payment Token Generation
 
 
-Your backend should call this endpoint to generate a payment token, which will be used to display Paycoinly payment UI on your customers' side as described in [this page](/docs/integrations/manual#add-a-payment-ui-to-your-frontend).
+Your backend should call this endpoint to generate a payment token, which will be used to display Paycoinly payment UI on your customers' side as described in [Manual Setup](/docs/integrations/manual#add-a-payment-ui-to-your-frontend) page.
 
 
 ### Endpoint
@@ -27,7 +27,18 @@ Please check [this page](/docs/appendix/api-key) to get API key in your Paycoinl
 
 ### Body
 
-You can customize the request body to fit your specific business requirements, referring to the table described in the below.
+You can customize the request body to fit your specific business requirements, and you can see its syntax below.
+
+```typescript
+{
+  price: string
+  currency?: string
+  localCurrency?: string
+  metadata?: {}
+}
+```
+
+You can see the meaning of each field in the below table.
 
 | Field         | Mandatory | Default | Description                                                                                                                         |
 | ------------- | --------- | ------- | ----------------------------------------------------------------------------------------------------------------------------------- |
@@ -43,11 +54,7 @@ You can customize the request body to fit your specific business requirements, r
 { "token": "<value>" }
 ```
 
-Use this token to render Paycoinly payment UI on your customers' side.
-
-```
-https://app.paycoinly.xyz/pay?token={token}
-```
+Use this token to [show Paycoinly payment UI](/docs/integrations/manual#add-a-payment-ui-to-your-frontend) on your frontend code showing to your customers.
 
 ### Example
 
