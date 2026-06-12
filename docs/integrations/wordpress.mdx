@@ -66,6 +66,16 @@ Here you can see arg details of the short code. All args are optional.
 | class       | Empty string                                                                | Your custom class name to render the button with                                                              |
 | style       | Empty string                                                                | Your custom style to render the button with                                                                   |
 
+#### Success handler and redirection
+
+By default, the Paycoinly UI launches the payment UI in a popup when triggered, and `on_complete` handler is executed on payment completion if you are subscribed to the **Premium** plan.
+
+
+However, if the `redirect` argument is provided, the payment flow is handled via a full-page redirect instead.
+Upon successful completion of the payment, the user is then redirected to the URL specified in the `redirect` argument.
+Flow specified by `on_complete` argument is ignored in this case.
+
+#### Price Determination
 
 You need to decide price from `order_id` by hooking into [`paycoinly_order_price`](/docs/appendix/wordpress-plugin-actions-and-filters#paycoinly_order_price) filter.
 
