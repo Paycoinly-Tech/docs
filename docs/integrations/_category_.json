@@ -2,6 +2,7 @@
   "label": "Integrations",
   "position": 2,
   "link": {
-    "type": "generated-index"
+    "type": "generated-index",
+    "description": "This page provides a variety of integration guides designed for specific business use cases. It also helps you choose the appropriate setup based on the type of website you operate."
   }
 }
