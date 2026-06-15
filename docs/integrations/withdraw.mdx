@@ -5,10 +5,12 @@ toc_max_heading_level: 4
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
+import Premium from '@site/src/components/premium'
 
 # Withdrawl Integration
 
-Withdrawl Integration enables developers to connect Paycoinly withdraw service to their platform, allowing your users to seamlessly withdraw their balances from Paycoinly.
+Withdrawl Integration enables developers to connect Paycoinly withdraw service to their platform, allowing your users to seamlessly withdraw their balances from Paycoinly. This feature requires<Premium /> subscrition.
+
 
 ### Prerequisites
 
@@ -23,6 +25,7 @@ Before you can start withdrawl integration, ensure you have the following:
 
 The webhook is a payment listener which will be triggered when your customer payment is completed.
 Please see implement details [here](/docs/integrations/manual#add-a-webhook-to-your-backend).
+
 Additionally you need to keep record of your user's [`claimable` amount](/docs/integrations/manual#body) in your backend, and pass the user's balance when [generating a withdraw token](#get-withdrawl-token).
 
 ### Add a backend endpoint to process withdrawl request
@@ -71,7 +74,7 @@ You can see the meaning of each field in the below table.
 
 #### Implementation
 
-- Ensure the withdrawal amount (or value) in the payload does not exceed the user's balance in your system.
+- Ensure the withdrawal amount (or value) in the payload does not exceed the user balance in your system.
 - After validation, send a withdrawl request to [Making Withdrawl Request API](/docs/api-reference/withdraw-request).
 - If the response is successful (200), deduct the specified amount from the user's balance in your system.
 

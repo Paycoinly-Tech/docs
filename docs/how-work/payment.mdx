@@ -18,17 +18,18 @@ sequenceDiagram
   autonumber
 
   actor user as User
-  participant browser as Browser
+  participant yourFrontend as Your Frontend
+  participant paycoinlyUI as Paycoinly Payment UI
   participant backend as Your System
   participant paycoinly as Paycoinly
   
-  user->>browser: Click Pay button
+  user->>yourFrontend: Click Pay button
 
   rect rgb(255, 191, 191)
 
-  note right of browser: Best practice - step 1
+  note right of yourFrontend: Best practice - step 1
 
-  browser->>backend: order id
+  yourFrontend->>backend: order id
 
   backend->>backend: Determine price using order id
 
@@ -36,7 +37,7 @@ sequenceDiagram
 
   note right of backend: Payment Token Generation API
 
-  backend->>paycoinly: price
+  backend->>paycoinly: price, order id
 
   paycoinly->>backend: payment token
 
@@ -44,11 +45,13 @@ sequenceDiagram
 
   backend->>backend: Determine Paycoinly payment UI url using payment token
 
-  backend->>browser: Paycoinly payment UI url
+  backend->>paycoinlyUI: Redirect to Paycoinly payment UI url
 
   end
 
-  browser->>paycoinly: Navigate to Paycoinly payment UI
+  user->>paycoinlyUI: Make the payment
+
+  paycoinlyUI->>paycoinly: Submit the payment
 
   paycoinly->>paycoinly: Process the payment
 
@@ -61,12 +64,14 @@ sequenceDiagram
   backend->>backend: Record the payment
 
   end
-  
+
+  paycoinly->>paycoinlyUI: Notify success
+    
   rect rgb(191, 255, 200)
 
-  note right of browser: 👑 Premium
+  note right of yourFrontend: 👑 Premium
 
-  paycoinly->>browser: Notify success
+  paycoinlyUI->>yourFrontend: Notify success
 
   end
 ```

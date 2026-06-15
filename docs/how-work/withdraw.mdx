@@ -4,3 +4,90 @@ sidebar_label: Withdrawl
 
 # How Does Withdrawl Flow Works With Your System
 
+The flow diagram provides a clear overview of how the withdrawal process integrates with your system.
+
+Here are some elements showing in the diagram with links to detailed information.
+- [Callback URL](/docs/integrations/withdraw#add-a-webhook-to-your-backend)
+- [Best practices - step 1](/docs/best-practices/withdraw#step-1)
+- [Initiate withdrawl process](/docs/integrations/withdraw#initiate-withdrawl-process)
+- [Getting Customer Balances API](/docs/api-reference/get-customer-balance)
+- [Withdrawl Token Generation API](/docs/api-reference/withdraw-token)
+- [Notify](/docs/integrations/withdraw#add-javascript-code)
+- [Process withdrawl request](/docs/integrations/withdraw#add-a-backend-endpoint-to-process-withdrawl-request)
+- [Withdrawl Request API](/docs/api-reference/withdraw-request)
+
+
+```mermaid
+sequenceDiagram
+  autonumber
+
+  actor user as User
+  participant yourFrontend as Your Frontend
+  participant paycoinlyUI as Paycoinly Withdrawl UI
+  participant backend as Your System
+  participant paycoinly as Paycoinly
+  
+  rect rgb(255, 191, 191)
+  note right of backend: Callback URL
+
+  paycoinly->>backend: Trigger Callback URL with payment data
+  backend->>backend: Adjust user balance
+
+  end
+
+  user->>yourFrontend: Click Withdraw button
+  yourFrontend->>backend: Initiate withdrawl process
+
+  rect rgb(235, 191, 255)
+  note right of paycoinlyUI: Best practices - step 1
+
+  rect rgb(255, 222, 191)
+  note right of backend: Initiate withdrawl process
+
+  rect rgb(191, 229, 255)
+  note right of backend: Getting Customer Balances API
+  backend->>paycoinly: Get user balances
+  paycoinly->>backend: user balances
+  end
+
+  backend->>backend: Get user id hash
+
+  rect rgb(191, 255, 234)
+  note right of backend: Withdrawl Token Generation API
+  backend->>paycoinly: user id hash, his/her balance
+  paycoinly->>backend: withrawl token
+  end
+  end
+
+  backend->>backend: Determine Paycoinly withdrawl UI url using withdrawl token
+
+  backend->>paycoinlyUI: Redirect to Paycoinly withdrawl UI
+  end
+
+  user->>paycoinlyUI: Submit withdrawl coin and amount
+
+  rect rgb(191, 208, 255)
+  note right of yourFrontend: Notify
+  paycoinlyUI->>yourFrontend: Notify withdrawl data
+  yourFrontend->>backend: withdraw data
+  end
+
+  rect rgb(255, 191, 234)
+  note right of backend: Process withdrawl request
+  backend->>backend: Ensure the withdrawal amount does not exceed his/her balance
+
+  rect rgb(217, 255, 191)
+  note right of backend: Withdrawl Request API
+  backend->>paycoinly: withdraw data
+  paycoinly->>backend: success
+  end
+
+  backend->>backend: Deduct his/her balance
+  end
+
+  paycoinly->>paycoinlyUI: Notify withdraw request has been created
+  user->>paycoinlyUI: withdraw
+  paycoinlyUI->>paycoinly: submit withdraw
+  paycoinly->>paycoinly: send funds to his/her wallet
+  paycoinly->>paycoinlyUI: success
+```
