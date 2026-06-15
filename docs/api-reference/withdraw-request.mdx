@@ -50,7 +50,11 @@ The meaning of each field is provided in the table below.
 | currency | Yes      | If not specified, the withdrawal `amount` is in the smallest unit of the token. Otherwise, the withdrawal `amount` is in the specified `currency`. |
 | user     |          | Id of your customer in your system who is performing the withdrawal                                                                                |
 
-For values of each field, please refer to [Withdrawl Integration](/docs/integrations/withdraw.mdx) page.
+For values of each field, please refer to [Withdrawl Integration](/docs/integrations/withdraw#body) page.
+
+:::tip[Security Tip]
+`user` should be the same value as the one used in the [Withdrawl Token Generation API](/docs/api-reference/withdraw-token#body).
+:::
 
 ### Response
 

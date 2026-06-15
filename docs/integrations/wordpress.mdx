@@ -54,48 +54,7 @@ You can select a payment in Paycoinly plugin which has the correct [Wordpress op
 
 ### Place Paycoinly UI
 
-Now you can place Paycoinly UI using `paycoinly` shortcode in any page.
-Here you can see arg details of the short code. All args are optional.
-
-| Arg         | Default                                                                     | Description                                                                                                   |
-| ----------- | --------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------- |
-| order_id    | Empty string                                                                | The price is determined by `order_id`                                                                         |
-| on_complete | `console.log(event.data.payload);`                                          | Javascript code which will be triggered on payment success in frontend. **Premium subscription is required.** |
-| redirect    | Empty string                                                                | Paycoinly payment UI will redirect to this URL after completion                                               |
-| html        | `<img src='https://app.paycoinly.xyz/logo/dark.svg' style='width: 5em;' />` | Your custom HTML to render inside the button                                                                  |
-| class       | Empty string                                                                | Your custom class name to render the button with                                                              |
-| style       | Empty string                                                                | Your custom style to render the button with                                                                   |
-
-#### Success handler and redirection
-
-By default, the Paycoinly UI launches the payment UI in a popup when triggered, and `on_complete` handler is executed on payment completion if you are subscribed to the **Premium** plan.
-
-
-However, if the `redirect` argument is provided, the payment flow is handled via a full-page redirect instead.
-Upon successful completion of the payment, the user is then redirected to the URL specified in the `redirect` argument.
-Flow specified by `on_complete` argument is ignored in this case.
-
-#### Price Determination
-
-You need to decide price from `order_id` by hooking into [`paycoinly_order_price`](/docs/appendix/wordpress-plugin-actions-and-filters#paycoinly_order_price) filter.
-
-:::tip[Security Tip]
-It is not safe to use `order_id` as direct price data when calling the shortcode, since a malicious user could manipulate it to pass any arbitrary amount.
-To ensure the integrity of your payments, always pass the order ID (or service ID) from the shortcode, and have your backend determine the correct price for that order by using the [`paycoinly_order_price`](/docs/appendix/wordpress-plugin-actions-and-filters#paycoinly_order_price) filter.
-:::
-
-You can see an example usage in the below.
-
-```php
-[paycoinly
-  order_id="premium"
-  class="wp-element-button"
-  style="color:red;"
-  redirect="/thank-you"
-  html="<div>Pay in Paycoinly</div>"
-  on_complete="console.log(hi)"
-]
-```
+Please use [`paycoinly` shortcode](/docs/appendix/wordpress-plugin-hooks#shortcodes) to render UI element, enabling your users to navigate to Paycoinly payment UI.
 
 ### Plugin actions and filters
 

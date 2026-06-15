@@ -53,22 +53,20 @@ The endpoint expects the request body to contain the data specified below.
   value: number
   currency: string
   wallet: string
-  user: string
 }
 ```
 
 You can see the meaning of each field in the below table.
 
 
-| Name     | Description                                                  |
-| -------- | ------------------------------------------------------------ |
-| chainId  | Chain ID of the token                                        |
-| symbol   | Symbol of the token                                          |
-| amount   | Token amount in wei (or smallest unit)                       |
-| value    | Token `amount` value in `currency`                           |
-| currency | Currency of `value` (Fixed to `USD`)                         |
-| wallet   | Wallet address the user will withdraw to                     |
-| user     | User id in your system for him/her performing the withdrawal |
+| Name     | Description                              |
+| -------- | ---------------------------------------- |
+| chainId  | Chain ID of the token                    |
+| symbol   | Symbol of the token                      |
+| amount   | Token amount in wei (or smallest unit)   |
+| value    | Token `amount` value in `currency`       |
+| currency | Currency of `value` (Fixed to `USD`)     |
+| wallet   | Wallet address the user will withdraw to |
 
 `chainId` and `symbol` should be the one you get from [Getting Customer Balances API](/docs/api-reference/get-customer-balance) in [Check customer balances](#check-customer-balances) step.
 
