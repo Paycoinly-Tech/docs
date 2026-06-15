@@ -13,11 +13,8 @@ Please see [How Does Payment Flow Work With Your System](/docs/how-work/payment.
 Make a **GET** endpoint on your backend which has the following implementation in it:
 
   - Accept **order ID** (or service ID) query param.
-
   - Determine price from **order ID**.
-
   - [Request a payment token](/docs/api-reference/payment-token#body) with the price included in its body.
-
   - Redirect to the following route using that token, which shows PayCoinly payment UI.
 
 ```

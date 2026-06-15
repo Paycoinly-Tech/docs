@@ -1,5 +1,6 @@
 ---
 sidebar_position: 1
+toc_max_heading_level: 4
 ---
 
 import Tabs from '@theme/Tabs';
@@ -14,28 +15,54 @@ Manual Integration enables developers to connect Paycoinly payment services to t
 
 Before you can start manual integration, ensure you have the following:
 
-- **How would you like to receive customer information?** is set to either **I Want To Know Who Paid** or **My Customers Can Claim Their Money Back** in **Payments** > **Settings** > **Basic**
-
+- **How would you like to receive customer information?** is set to one of the followings in **Payments** > **Settings** > **Basic**
+  - **I Want To Know Who Paid**
+  - **My Customers Can Claim Their Money Back**
 - **On which platform is your service running?** is set to **None** in **Payments** > **Settings** > **Integration**
 
 ![Image](./img/manual-1.png)
 
 ### Add a webhook to your backend
 
-PayCoinly will call this endpoint when the payment is successfully completed. The request body contains a JSON object you define as [`metadata`](/docs/api-reference/payment-token#body) when generating a payment token in the [next step](#make-a-request-to-get-a-payment-token).
-The webhook will receive a request containing `x-api-key` header. Please check [this page](/docs/appendix/api-key) to get API key in your Paycoinly dashboard.
+PayCoinly will call this endpoint when the payment is successfully completed.
+Implement the necessary backend logic to record the payment in your system.
 
-- The webhook URL should be the one you set in **Settings** > **Integration** > **Callback URL** in your payment.
+#### Endpoint
+
+The webhook URL should be the one you set in **Settings** > **Integration** > **Callback URL** in your payment.
 
 ![Image](./img/manual-2.png)
 
-- The webhook should be a **POST** route.
+The webhook should be a **POST** route.
+
+#### Header
+
+The webhook will receive a request containing `x-api-key` header. Please check [this page](/docs/appendix/api-key) to get API key in your Paycoinly dashboard.
 
 :::tip[Security Tip]
 To secure this webhook and prevent unauthorized or arbitrary access
 - Validate that the `x-api-key` header in the incoming request exactly matches with the above value.
 - Only allow the route to be executed if this API key is correct. Otherwise, reject the request.
 :::
+
+#### Body
+
+The endpoint expects the request body to contain the below fields.
+- basic fields about the payment
+- fields passed to [`metadata`](/docs/api-reference/payment-token#body) when generating a payment token in the [next step](#get-a-payment-token)
+
+All fields are in string format.
+
+| Field             | Description                                                                                                               |
+| ----------------- | ------------------------------------------------------------------------------------------------------------------------- |
+| chainId           | Chain ID of the payment coin                                                                                              |
+| symbol            | Symbol of payment coin                                                                                                    |
+| totalPaid         | Total amount of coin paid in gwei (or the smallest unit)                                                                  |
+| netPaid           | Paid amount after transaction fee                                                                                         |
+| claimable         | Amount to your users to claim if the payment is set to **My Customers Can Claim Their Money Back**, <br/> otherwise `"0"` |
+| txLink            | A link to payment details                                                                                                 |
+| `metadata` fields | [`metadata`](/docs/api-reference/payment-token#body) fields in destructured                                               |
+
 
 ### Get a payment token
 
@@ -49,7 +76,7 @@ Use the following URL to show Paycoinly payment page.
 https://app.paycoinly.xyz/pay?token={token}
 ```
 
-where `token` is the payment token obtained from [the above step](#make-a-request-to-get-a-payment-token).
+where `token` is the payment token obtained from [the above step](#get-a-payment-token).
 
 Here is a sample HTML snippet that you can use to embed the payment UI.
 
