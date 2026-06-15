@@ -23,7 +23,7 @@ Before you can start withdrawl integration, ensure you have the following:
 
 The webhook is a payment listener which will be triggered when your customer payment is completed.
 Please see implement details [here](/docs/integrations/manual#add-a-webhook-to-your-backend).
-Additionally you need to keep record of your user's `claimable` amount in your backend which needs to pass when [generating a withdraw token](#get-withdrawl-token).
+Additionally you need to keep record of your user's [`claimable` amount](/docs/integrations/manual#body) in your backend, and pass the user's balance when [generating a withdraw token](#get-withdrawl-token).
 
 ### Add a backend endpoint to process withdrawl request
 
@@ -92,9 +92,11 @@ You should use the same `chainId` and `symbol` as the one you retrieved in the [
 The API returns a withdrawal token, which is used to link and launch the Paycoinly Withdrawl UI in the [next step](#add-a-withdraw-ui-to-your-frontend).
 
 :::info
-It is the responsibility of your system to maintain and track the withdrawal eligibility of each user.
+It is the **responsibility of your system** to maintain and track the withdrawal eligibility of each user.
 Paycoinly does not store or manage individual user balances within your platform; it only maintains the aggregate balance of all your users combined.
 Therefore, when generating a withdrawal token, your backend must provide the user's available balance to [Withdrawl Token Generation API](/docs/api-reference/withdraw-token#body).
+
+Also see [how to record users' withdrawable balance](#add-a-webhook-to-your-backend) in your system.
 :::
 
 ### Implement frontend
@@ -162,3 +164,4 @@ Upon message acceptance, make a call to [Process withdrawal request endpoint](#a
 
 ### Best practices
 
+[This section](/docs/best-practices/withdraw) also describes best practices for implementing withdrawl integration.
