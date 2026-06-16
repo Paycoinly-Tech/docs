@@ -1,43 +1,50 @@
-import type {ReactNode} from 'react';
-import clsx from 'clsx';
-import Link from '@docusaurus/Link';
-import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
-import Layout from '@theme/Layout';
-import HomepageFeatures from '@site/src/components/HomepageFeatures';
-import Heading from '@theme/Heading';
+import clsx from "clsx";
+import Link from "@docusaurus/Link";
+import Heading from "@theme/Heading";
+import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
+import Layout from "@theme/Layout";
+import cobe from "cobe";
 
-import styles from './index.module.css';
+const createGlobe = (ref: HTMLCanvasElement) => {
+  let phi = 0;
 
-function HomepageHeader() {
-  const {siteConfig} = useDocusaurusContext();
-  return (
-    <header className={clsx('hero hero--primary', styles.heroBanner)}>
-      <div className="container">
-        <Heading as="h1" className="hero__title">
-          {siteConfig.title}
-        </Heading>
-        <p className="hero__subtitle">{siteConfig.tagline}</p>
-        <div className={styles.buttons}>
-          <Link
-            className="button button--secondary button--lg"
-            to="/docs/intro">
-            Docusaurus Tutorial - 5min ⏱️
-          </Link>
-        </div>
-      </div>
-    </header>
-  );
-}
+  const globe = cobe(ref, {
+    devicePixelRatio: 2,
+    width: 2400, // Rendered internally at 2400x2400 for crisp edges on scaling
+    height: 2400,
+    phi: 0,
+    theta: 0.15,
+    dark: 1,
+    diffuse: 1.2,
+    offset: [0, 0],
+    mapSamples: 16000,
+    mapBrightness: 6,
+    baseColor: [0.15, 0.15, 0.15],
+    markerColor: [1, 1, 1],
+    glowColor: [0.3, 0.3, 0.3],
+    markers: [],
+  });
 
-export default function Home(): ReactNode {
-  const {siteConfig} = useDocusaurusContext();
+  function animate() {
+    phi += 0.005; // Adjust speed as needed
+    globe.update({ phi });
+    requestAnimationFrame(animate);
+  }
+
+  animate();
+};
+
+export default function Home() {
+  const { siteConfig } = useDocusaurusContext();
+
   return (
     <Layout
       title={`Hello from ${siteConfig.title}`}
-      description="Description will go into a meta tag in <head />">
-      <HomepageHeader />
+      description="Description will go into a meta tag in <head />"
+    >
       <main>
-        <HomepageFeatures />
+        <canvas ref={createGlobe} className="globe" />
+        <Heading as="h1">Hello</Heading>
       </main>
     </Layout>
   );
