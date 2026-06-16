@@ -29,6 +29,10 @@
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
 }
 
+main {
+  padding: 2em;
+}
+
 .globe {
   width: 100%;
   max-width: 70em;
@@ -43,6 +47,73 @@
   );
 }
 
+.how-works {
+  margin-bottom: 2em;
+}
+
+.img-container {
+  display: flex;
+}
+
+.img-frame {
+  margin: auto;
+  width: 70%;
+  border-radius: 1em;
+  box-shadow: 0 4px 8px 0 #00000033, 0px 8px 20px 4px #000000ad;
+}
+
+.background--dark {
+  margin: -2em;
+  padding: 2em;
+  background-color: #041d2e;
+}
+
+.background--light {
+  margin: -2em;
+  padding: 2em;
+  background-color: #e7eff5;
+}
+
+.title {
+  font-size: 4em;
+}
+
+strong {
+  color: #1a8870;
+}
+
 .globe canvas {
   width: 100%;
+}
+
+.feature-list {
+  margin-top: 5em;
+  margin-bottom: 5em;
+  justify-content: center;
+}
+
+.button-box {
+  display: grid;
+  grid-template-columns: auto auto auto;
+  gap: .5em;
+  width: fit-content;
+}
+
+.how-works {
+  margin-top: 3em;
+}
+
+.crypto-ready {
+  padding: 2em;
+}
+
+.feature-list section {
+  box-shadow: 0px 3px 10px 0px #49494926;
+  padding: 1em;
+  margin: 1em;
+  border-radius: 1em;
+}
+
+.feature-list section:nth-child(2n) {
+  background-color: #1a887017;
 }

@@ -91,7 +91,7 @@ const config: Config = {
           type: 'docSidebar',
           sidebarId: 'tutorialSidebar',
           position: 'left',
-          label: 'Docs',
+          label: 'Documentation',
         },
         { to: 'https://app.paycoinly.xyz/register', label: 'Register', position: 'right' },
         { to: 'https://app.paycoinly.xyz/login', label: 'Login', position: 'right' },
