@@ -1,0 +1,41 @@
+name: Deploy
+
+permissions:
+  contents: read
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  check:
+    name: Docs
+    runs-on: ubuntu-latest
+    environment: production
+
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          persist-credentials: false
+          submodules: recursive
+
+      - name: Setup Bun
+        uses: oven-sh/setup-bun@v2
+
+      - name: Install Bun Packages
+        run: bun install
+
+      - name: Build pages
+        run: bun run build
+
+      - name: Setup SSH
+        run: |
+          mkdir -p ~/.ssh
+          echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_ed25519
+          chmod 600 ~/.ssh/id_ed25519
+          ssh-keyscan -H ${{ secrets.SSH_HOST }} >> ~/.ssh/known_hosts
+
+      - name: Copy files to production
+        run: |
+          rsync -avz --delete -e ssh build/ ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}:/var/www/paycoinly-landing-page
