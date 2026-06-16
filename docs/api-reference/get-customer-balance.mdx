@@ -1,0 +1,56 @@
+# Getting Customer Balances
+
+This endpoint returns a list of your customers' balance per coin, which will be used by [Withdrawl Token Generation API](/docs/api-reference/withdraw-token).
+For more information of customer withdrawl steps, please refer to [Withdrawl Integration](/docs/integrations/withdraw#check-customer-balances) page.
+
+### Endpoint
+
+```
+https://app.paycoinly.xyz/v1/withdraw/balance
+```
+
+It is a **GET** request.
+
+### Query Parameters
+
+| Name     | Optional | Default | Description                                                                                                                              |
+| -------- | -------- | ------- | ---------------------------------------------------------------------------------------------------------------------------------------- |
+| currency | Yes      | USD     | `value` in response is calculated in the specified currency. See [Currency List](/docs/appendix/currency-list.mdx) for available values. |
+
+### Headers
+
+```json
+{ "x-api-key": "<api key>", "content-type": "application/json" }
+```
+
+The request should include `x-api-key` in its header.
+Please check [this page](/docs/appendix/api-key) to get API key in your Paycoinly dashboard.
+
+### Response
+
+Object array, whose syntax is described in the below.
+
+```typescript title='Syntax'
+{
+  amount: string;
+  value: number;
+  currency: string;
+  token: {
+    chainId: number;
+    symbol: string;
+    address: string | null;
+    decimals: number;
+}[]
+```
+
+You can see the meaning of each field in the table below.
+
+| Name     | Description                                                                                 |
+| -------- | ------------------------------------------------------------------------------------------- |
+| amount   | Coin amount in wei (or smallest unit)                                                       |
+| value    | Value of the coin `amount` in `currency` specified as a query parameter                     |
+| currency | Currency of `value` in the response                                                         |
+| chainId  | Chain ID of the coin                                                                        |
+| symbol   | Symbol of the coin                                                                          |
+| address  | Address of the coin or `null` if it is the native coin of its chain like **ETH** or **BNB** |
+| decimals | Decimals of the coin                                                                        |

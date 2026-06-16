@@ -1,0 +1,68 @@
+import Premium from '@site/src/components/premium'
+
+# Withdrawl Token Generation
+
+For your customers to withdraw their balance, your backend should call this endpoint to generate a withdrawl token, which is used to show withdrawl UI to your customer.
+You need to subscribe to<Premium /> to use this API.
+
+For more information of customer withdrawl steps, please refer to [Withdrawl Integration](/docs/integrations/withdraw#get-withdrawl-token) page.
+
+### Endpoint
+
+```
+https://app.paycoinly.xyz/v1/withdraw/token
+```
+
+It is a **POST** request.
+
+### Headers
+
+```json
+{ "x-api-key": "<api key>", "content-type": "application/json" }
+```
+
+The request should include `x-api-key` in its header.
+Please check [this page](/docs/appendix/api-key) to get API key in your Paycoinly dashboard.
+
+### Body
+
+You can see the syntax of the request body below.
+
+```typescript
+{
+  user: string;
+  balances: {
+    amount: string
+    chainId: number
+    symbol: string
+  }[]
+}
+```
+
+The meaning of each field is provided in the table below.
+
+| Name    | Description                                                          |
+| ------- | -------------------------------------------------------------------- |
+| user    | Id of your customer in your system who is performing the withdrawal. |
+| amount  | Token amount in wei (or smallest unit)                               |
+| chainId | Chain ID of the token                                                |
+| symbol  | Symbol of the token                                                  |
+
+`chainId` and `symbol` should be the one you retrieved from [Getting Customer Balances API](/docs/api-reference/get-customer-balance#response).
+
+:::tip[Security Tip]
+- Regarding `user` field, it is recommended to use hashed format to prevent enumeration of user ids.
+- **IMPORTANT:** Please ensure that you do not specify `balances` exceeding the amount your user is eligible to withdraw.
+:::
+
+:::info[]
+You can't provide greater value than the `amount` returned from [Getting Customer Balances API](/docs/api-reference/get-customer-balance#response).
+:::
+
+### Response
+
+```json
+{ "token": "<value>" }
+```
+
+Use this token to [show Paycoinly withdrawl UI](/docs/integrations/withdraw#add-a-withdraw-ui-to-your-frontend) on your frontend code showing to your customers.

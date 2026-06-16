@@ -1,0 +1,79 @@
+---
+sidebar_label: Payment
+---
+
+import Premium from '@site/src/components/premium'
+
+# How Does Payment Flow Work With Your System
+
+The flow described on this page serves as the foundation for all payment integrations - [Manual Setup](/docs/integrations/manual), [Woocommerce](/docs/integrations/woocommerce), [Wordpress](/docs/integrations/wordpress) and [Manual Setup Best Practices](/docs/best-practices/manual). Each integration is built upon the core workflow and logic outlined here.
+
+Here are some elements showing in the diagram with links to detailed information.
+
+- [Best practice - step 1](/docs/best-practices/manual#step-1)
+- [Payment Token Generation API](/docs/api-reference/payment-token.mdx)
+- [Callback](/docs/integrations/manual#add-a-webhook-to-your-backend)
+- [Notify success](/docs/integrations/manual#receive-payment-success-event-in-your-frontend) <Premium />
+
+```mermaid
+sequenceDiagram
+  autonumber
+
+  actor user as User
+  participant yourFrontend as Your Frontend
+  participant paycoinlyUI as Paycoinly Payment UI
+  participant backend as Your System
+  participant paycoinly as Paycoinly
+  
+  user->>yourFrontend: Click Pay button
+
+  rect rgb(255, 191, 191)
+
+  note right of yourFrontend: Best practice - step 1
+
+  yourFrontend->>backend: order id
+
+  backend->>backend: Determine price using order id
+
+  rect rgb(191, 223, 255)
+
+  note right of backend: Payment Token Generation API
+
+  backend->>paycoinly: price, order id
+
+  paycoinly->>backend: payment token
+
+  end
+
+  backend->>backend: Determine Paycoinly payment UI url using payment token
+
+  backend->>paycoinlyUI: Redirect to Paycoinly payment UI url
+
+  end
+
+  user->>paycoinlyUI: Make the payment
+
+  paycoinlyUI->>paycoinly: Submit the payment
+
+  paycoinly->>paycoinly: Process the payment
+
+  rect rgb(255, 191, 255)
+
+  note right of backend: Callback
+
+  paycoinly->>backend: Trigger callback URL with order id
+
+  backend->>backend: Record the payment
+
+  end
+
+  paycoinly->>paycoinlyUI: Notify success
+    
+  rect rgb(191, 255, 200)
+
+  note right of yourFrontend: 👑 Premium
+
+  paycoinlyUI->>yourFrontend: Notify success
+
+  end
+```
