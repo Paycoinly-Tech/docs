@@ -27,8 +27,8 @@ const config: Config = {
 
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
-  organizationName: 'facebook', // Usually your GitHub org/user name.
-  projectName: 'docusaurus', // Usually your repo name.
+  organizationName: 'Paycoinly', // Usually your GitHub org/user name.
+  projectName: 'Paycoinly', // Usually your repo name.
 
   onBrokenLinks: 'throw',
 
@@ -48,8 +48,8 @@ const config: Config = {
           sidebarPath: './sidebars.ts',
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
-          editUrl:
-            'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
+          // editUrl:
+          //   'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
         },
         blog: {
           showReadingTime: true,
@@ -59,8 +59,8 @@ const config: Config = {
           },
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
-          editUrl:
-            'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
+          // editUrl:
+          //   'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
           // Useful options to enforce blogging best practices
           onInlineTags: 'warn',
           onInlineAuthors: 'warn',
@@ -84,6 +84,7 @@ const config: Config = {
       logo: {
         alt: 'Paycoinly Logo',
         src: 'https://app.paycoinly.xyz/logo/light.svg',
+        srcDark: 'https://app.paycoinly.xyz/logo/dark.svg',
       },
       items: [
         {
@@ -92,26 +93,22 @@ const config: Config = {
           position: 'left',
           label: 'Docs',
         },
-        // { to: '/docs', label: 'Docs', position: 'left' },
-        // {
-        //   href: 'https://github.com/facebook/docusaurus',
-        //   label: 'GitHub',
-        //   position: 'right',
-        // },
+        { to: 'https://app.paycoinly.xyz/register', label: 'Register', position: 'right' },
+        { to: 'https://app.paycoinly.xyz/login', label: 'Login', position: 'right' },
       ],
     },
     footer: {
       style: 'dark',
       links: [
-        {
-          // title: 'Docs',
-          items: [
-            {
-              label: 'Docs',
-              to: '/docs/intro',
-            },
-          ],
-        },
+        // {
+        //   // title: 'Docs',
+        //   items: [
+        //     {
+        //       label: 'Docs',
+        //       to: '/docs/intro',
+        //     },
+        //   ],
+        // },
         // {
         //   title: 'Community',
         //   items: [

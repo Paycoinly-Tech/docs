@@ -30,7 +30,19 @@
 }
 
 .globe {
-  max-width: 40em;
   width: 100%;
+  max-width: 70em;
   margin: auto;
+  aspect-ratio: 5 / 3;
+  overflow-y: hidden;
+
+  mask-image: linear-gradient(
+    to bottom,
+    black 50%,
+    transparent 100%
+  );
+}
+
+.globe canvas {
+  width: 100%;
 }
