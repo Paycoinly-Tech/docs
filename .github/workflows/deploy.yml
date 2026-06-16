@@ -27,7 +27,9 @@ jobs:
         uses: oven-sh/setup-bun@v2
 
       - name: Install Bun Packages
-        run: bun install
+        run: |
+          echo ${{ secrets.ALGOLIA_APP_ID }}
+          bun install
 
       - name: Build pages
         run: bun run build
