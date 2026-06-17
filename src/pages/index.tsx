@@ -4,12 +4,13 @@ import { useColorMode } from "@docusaurus/theme-common";
 import Layout from "@theme/Layout";
 import Head from "@docusaurus/Head";
 import imgDashboard from "../img/dashboard.png";
+import "../css/landing-page.scss";
 
 const Main = () => {
   const { colorMode } = useColorMode();
 
   return (
-    <main>
+    <main className="landing-page">
       <section
         className={clsx(
           "row",

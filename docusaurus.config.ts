@@ -6,6 +6,16 @@ import dotenv from 'dotenv';
 dotenv.config()
 
 // This runs in Node.js - Don't use client-side code here (browser APIs, JSX...)
+const useCases = [
+  { label: 'Subscription', to: '/docs/integrations/manual' },
+  { label: 'POS and Local Businesses', to: '/docs/integrations/pos' },
+  { label: 'Donation', to: '/docs/integrations/donation' },
+  { label: 'Wordpress', to: '/docs/integrations/wordpress' },
+  { label: 'Woocommerce', to: '/docs/integrations/woocommerce' },
+  { label: 'Withdrawal', to: '/docs/integrations/withdraw' }
+]
+
+const contactLink = 'https://forms.zohopublic.com/techpayc1/form/ContactUs/formperma/kWsjKLqIPHDUpQa84UIGxq-Cnqc-S0AHjZRq_aGH-hI'
 
 const config: Config = {
   title: 'Paycoinly',
@@ -21,6 +31,8 @@ const config: Config = {
   future: {
     v4: true, // Improve compatibility with the upcoming Docusaurus v4
   },
+
+  plugins: ['docusaurus-plugin-sass'],
 
   // Set the production url of your site here
   url: 'https://www.paycoinly.xyz',
@@ -131,48 +143,76 @@ const config: Config = {
           position: 'left',
           label: 'Documentation',
         },
+        {
+          type: 'dropdown',
+          label: 'How It Works',
+          position: 'left',
+          items: [
+            {
+              label: 'Payment',
+              to: '/docs/how-work/payment',
+            },
+            {
+              label: 'Withdrawal',
+              to: '/docs/how-work/withdraw',
+            },
+          ],
+        },
+        {
+          type: 'dropdown',
+          label: 'Use Cases',
+          position: 'left',
+          items: useCases,
+        },
+        {
+          to: contactLink,
+          position: 'left',
+          label: 'Contact Us',
+        },
         { to: 'https://app.paycoinly.xyz/register', label: 'Register', position: 'right' },
         { to: 'https://app.paycoinly.xyz/login', label: 'Login', position: 'right' },
       ],
     },
     footer: {
       style: 'dark',
+      logo: {
+        alt: 'Logo',
+        src: 'https://app.paycoinly.xyz/logo/dark.svg',
+        href: 'https://www.paycoinly.xyz',
+        width: 160,
+        height: 51,
+      },
       links: [
-        // {
-        //   // title: 'Docs',
-        //   items: [
-        //     {
-        //       label: 'Docs',
-        //       to: '/docs/intro',
-        //     },
-        //   ],
-        // },
-        // {
-        //   title: 'Community',
-        //   items: [
-        //     {
-        //       label: 'Discord',
-        //       href: 'https://discordapp.com/invite/docusaurus',
-        //     },
-        //     {
-        //       label: 'X',
-        //       href: 'https://x.com/docusaurus',
-        //     },
-        //   ],
-        // },
-        // {
-        //   title: 'More',
-        //   items: [
-        //     {
-        //       label: 'Blog',
-        //       to: '/blog',
-        //     },
-        //     {
-        //       label: 'GitHub',
-        //       href: 'https://github.com/facebook/docusaurus',
-        //     },
-        //   ],
-        // },
+        {
+          title: 'Learn',
+          items: [
+            {
+              label: 'Documentation',
+              to: '/docs/intro',
+            },
+            {
+              label: 'How It Works',
+              to: '/docs/category/how-does-it-work',
+            },
+          ],
+        },
+        {
+          title: 'Use Cases',
+          items: useCases,
+        },
+        {
+          title: 'Company',
+          items: [
+            {
+              label: 'Contact Us',
+              to: contactLink,
+            },
+            // {
+            //   label: 'GitHub',
+            //   href: 'https://github.com/facebook/docusaurus',
+            // },
+          ],
+        },
       ],
       copyright: `Copyright © ${new Date().getFullYear()} Paycoinly`,
     },
