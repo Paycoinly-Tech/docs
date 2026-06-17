@@ -199,10 +199,7 @@ const Page = () => (
         content="https://app.paycoinly.xyz/logo/dark.svg"
       />
     </Head>
-    <Layout
-      title="Crypto Payment Gateway"
-      description="PayCoinly is the crypto payment gateway for businesses. Accept crypto payments easily and securely."
-    >
+    <Layout description="PayCoinly is the crypto payment gateway for businesses. Accept crypto payments easily and securely.">
       <Main />
     </Layout>
   </>
