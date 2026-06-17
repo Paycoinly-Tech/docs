@@ -18,7 +18,7 @@ const useCases = [
 const contactLink = 'https://forms.zohopublic.com/techpayc1/form/ContactUs/formperma/kWsjKLqIPHDUpQa84UIGxq-Cnqc-S0AHjZRq_aGH-hI'
 
 const config: Config = {
-  title: 'Crypto Payment Gateway | Paycoinly',
+  title: 'Paycoinly',
   tagline: 'Dinosaurs are cool',
   favicon: 'https://app.paycoinly.xyz/favicon.ico',
 

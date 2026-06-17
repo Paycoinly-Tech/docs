@@ -200,7 +200,7 @@ const Page = () => (
       />
     </Head>
     <Layout
-      title="Paycoinly"
+      title="Crypto Payment Gateway"
       description="PayCoinly is the crypto payment gateway for businesses. Accept crypto payments easily and securely."
     >
       <Main />
