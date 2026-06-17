@@ -1,0 +1,27 @@
+---
+sidebar_label: Success Event
+---
+
+import Premium from '@site/src/components/premium'
+
+# Payment Success Event on Frontend
+
+When Paycoinly processes a payment successfully, it triggers a success event to your frontend with the data your backend passed to Paycoinly when [generating the payment token](/docs/api-reference/payment-token).
+The event payload contains [information](/docs/api-reference/payment-token#body) about price, currency and metadata of the completed transaction.
+The frontend can then update the UI to reflect the successful payment based on the event payload and provide appropriate feedback to the user, eliminating the needs for requesting backend for updates.
+
+This feature is available to <Premium /> users.
+
+The example shows how you can access the event payload.
+
+```javascript
+window.addEventListener('message', (event) => {
+  if (event.origin !== 'https://app.paycoinly.xyz') {
+    return;
+  }
+  if (event.data.type === 'PAYCOINLY_PAYMENT_COMPLETE') {
+    // event.data.payload contains price, currency and metadata
+    console.log(event.data.payload);
+  }
+});
+```
