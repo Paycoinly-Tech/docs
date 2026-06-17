@@ -113,10 +113,13 @@ window.addEventListener('message', (event) => {
     return;
   }
   if (event.data.type === 'PAYCOINLY_PAYMENT_COMPLETE') {
+    // event.data.payload contains price, currency and metadata
     console.log(event.data.payload);
   }
 });
 ```
+
+Please see [Success Event](/docs/appendix/success-event) page to check how this event is triggered.
 
 ### Best practices
 
