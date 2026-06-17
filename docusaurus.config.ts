@@ -7,7 +7,7 @@ dotenv.config()
 
 // This runs in Node.js - Don't use client-side code here (browser APIs, JSX...)
 const useCases = [
-  { label: 'Subscription', to: '/docs/integrations/manual' },
+  { label: 'Checkout and Subscription', to: '/docs/integrations/manual' },
   { label: 'POS and Local Businesses', to: '/docs/integrations/pos' },
   { label: 'Donation', to: '/docs/integrations/donation' },
   { label: 'Wordpress', to: '/docs/integrations/wordpress' },
