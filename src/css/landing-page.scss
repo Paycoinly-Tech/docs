@@ -1,9 +1,29 @@
 
+:root {
+  --bg-theme: #e7eff5;
+}
+
+[data-theme="dark"] {
+  --bg-theme: #041d2e;
+}
+
+
 main.landing-page {
   padding: 2em;
 }
 
-.landing-page {  
+.landing-page {
+  .theme-background {
+    background-color: var(--bg-theme);
+  }
+}
+
+.landing-page {
+  .wide {
+    margin: -2em;
+    padding: 2em;
+  }
+
   .how-works {
     margin-bottom: 2em;
   }
@@ -17,18 +37,6 @@ main.landing-page {
     width: 70%;
     border-radius: 1em;
     box-shadow: 0 4px 8px 0 #00000033, 0px 8px 20px 4px #000000ad;
-  }
-  
-  .background--dark {
-    margin: -2em;
-    padding: 2em;
-    background-color: #041d2e;
-  }
-  
-  .background--light {
-    margin: -2em;
-    padding: 2em;
-    background-color: #e7eff5;
   }
   
   .title {
@@ -57,7 +65,7 @@ main.landing-page {
   }
   
   .crypto-ready {
-    padding: 2em;
+    padding: 6em;
   }
   
   .feature-list section {
@@ -68,6 +76,6 @@ main.landing-page {
   }
   
   .feature-list section:nth-child(2n) {
-    background-color: #1a887017;
+    background-color: var(--bg-theme);
   }
 }
