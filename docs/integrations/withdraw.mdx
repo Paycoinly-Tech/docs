@@ -14,7 +14,7 @@ Withdrawl Integration enables developers to connect Paycoinly withdraw service t
 
 ### Prerequisites
 
-Before you can start withdrawl integration, ensure you have the following:
+Before you can start withdrawal integration, ensure you have the following:
 
 - **How would you like to receive customer information?** is set to **My Customers Can Claim Their Money Back** in **Payments** > **Settings** > **Basic**
 - Provide value to **Callback URL** and **Fee**
@@ -26,14 +26,14 @@ Before you can start withdrawl integration, ensure you have the following:
 The webhook is a payment listener which will be triggered when your customer payment is completed.
 Please see implement details [here](/docs/integrations/manual#add-a-webhook-to-your-backend).
 
-Additionally you need to keep record of your user's [`claimable` amount](/docs/integrations/manual#body) in your backend, and pass the user's balance when [generating a withdraw token](#get-withdrawl-token).
+Additionally you need to keep record of your user's [`claimable` amount](/docs/integrations/manual#body) in your backend, and pass the user's balance when [generating a withdraw token](#get-withdrawal-token).
 
-### Add a backend endpoint to process withdrawl request
+### Add a backend endpoint to process withdrawal request
 
 As the first among all others, you need to add a **POST** endpoint to your backend which does the following things:
 
-- handle the withdrawl logic
-- ask Paycoinly to make a withdrawl request so that your customers can finalize their withdrawl action using it
+- handle the withdrawal logic
+- ask Paycoinly to make a withdrawal request so that your customers can finalize their withdrawal action using it
 
 This endpoint will be triggered when implementing the Javascript integration described in the [Add javascript code](#add-javascript-code) step.
 
@@ -73,20 +73,20 @@ You can see the meaning of each field in the below table.
 #### Implementation
 
 - Ensure the withdrawal amount (or value) in the payload does not exceed the user balance in your system.
-- After validation, send a withdrawl request to [Making Withdrawl Request API](/docs/api-reference/withdraw-request).
+- After validation, send a withdrawal request to [Making Withdrawl Request API](/docs/api-reference/withdraw-request).
 - If the response is successful (200), deduct the specified amount from the user's balance in your system.
 
-### Initiate withdrawl process
+### Initiate withdrawal process
 
-When your user initiates a balance withdrawl, your backend needs to perform following tasks.
+When your user initiates a balance withdrawal, your backend needs to perform following tasks.
 
 #### Check customer balances
 
 Check balances of your customers combined by making request to [Getting Customer Balances API](/docs/api-reference/get-customer-balance) in your backend.
 The API responds with a list of coins and their respective balances.
-The response includes token data like `chainId`, `symbol` which need to be used in the [next step](#get-withdrawl-token).
+The response includes token data like `chainId`, `symbol` which need to be used in the [next step](#get-withdrawal-token).
 
-#### Get withdrawl token
+#### Get withdrawal token
 
 Your backend should then call the [Withdrawl Token Generation API](/docs/api-reference/withdraw-token) using your user ID initiating the withdrawal, along with [his/her balance information](#add-a-webhook-to-your-backend) stored in your system.
 You should use the same `chainId` and `symbol` as the one you retrieved in the [previous step](#check-customer-balances) when passing the balance information to the API.
@@ -110,7 +110,7 @@ Show the withdraw UI to your users using the following URL
 https://app.paycoinly.xyz/claim/{token}
 ```
 
-where `token` is the withdraw token obtained from the [previous step](#get-withdrawl-token).
+where `token` is the withdraw token obtained from the [previous step](#get-withdrawal-token).
 
 Here is a sample HTML snippet that you can use to embed the withdraw UI.
 
@@ -151,7 +151,7 @@ window.addEventListener('message', (event) => {
     console.log(event.data.payload);
 
     // make a request to your backend with event.data.payload
-    fetch('/process/withdrawl-request', { method: 'post', body: JSON.stringify(event.data.payload) })
+    fetch('/process/withdrawal-request', { method: 'post', body: JSON.stringify(event.data.payload) })
       .then(() => {
         console.log('Withdrawal request processed successfully');
       })
@@ -160,9 +160,9 @@ window.addEventListener('message', (event) => {
 ```
 
 The message event delivers a payload in `event.data.payload`, which includes the withdrawal details selected by the user.
-Upon message acceptance, make a call to [Process withdrawal request endpoint](#add-a-backend-endpoint-to-process-withdrawl-request), which you configured in the very first step, with the payload to submit a withdrawal request to PayCoinly.
+Upon message acceptance, make a call to [Process withdrawal request endpoint](#add-a-backend-endpoint-to-process-withdrawal-request), which you configured in the very first step, with the payload to submit a withdrawal request to PayCoinly.
 
 
 ### Best practices
 
-[This section](/docs/best-practices/withdraw) also describes best practices for implementing withdrawl integration.
+[This section](/docs/best-practices/withdraw) also describes best practices for implementing withdrawal integration.
