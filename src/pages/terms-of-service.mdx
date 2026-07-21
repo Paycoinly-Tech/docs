@@ -1,0 +1,142 @@
+# Terms of Service
+
+**Last Updated: July 21, 2026**
+
+These Terms of Service ("**Terms**") are a binding agreement between you (an individual, business, or platform integrating or using the Paycoinly service, referred to as "**Merchant**," "**you**," or "**your**") and Paycoinly ("**Paycoinly**," "**we**," "**us**," or "**our**"), governing your access to and use of the website at paycoinly.xyz, the dashboard at app.paycoinly.xyz, our APIs, SDKs, webhooks, WordPress and WooCommerce plugins, payment buttons, point-of-sale (POS) tools, and any other software, documentation, or services we provide (collectively, the "**Service**").
+
+**By registering for an account, obtaining an API key, installing our plugins, or otherwise using the Service, you accept these Terms.** If you do not agree, do not use the Service.
+
+{/* > **Placeholder Notice:** Bracketed items such as the legal entity name, registered address, governing law, and contact email are placeholders. Paycoinly should replace these with accurate corporate and legal details before publishing this document. */}
+
+---
+
+## 1. What Paycoinly Is
+
+Paycoinly is a multi-chain crypto payment gateway that allows businesses and individuals to accept, route, and withdraw payments in stablecoins, native chain tokens (e.g., ETH, BNB), tokenized real-world assets, and other supported digital assets ("**Digital Assets**"). Paycoinly presently supports the Ethereum Mainnet, Polygon, Arbitrum, BNB Smart Chain, and Avalanche networks, with additional networks (including Bitcoin, Tron, and Solana) planned. Supported currencies and Digital Assets are listed in our documentation and may change at any time without notice.
+
+Use cases supported by the Service include, without limitation: e-commerce checkout, subscriptions, donations and tipping, point-of-sale payments for physical/local businesses, and payouts/withdrawals to end customers. Paycoinly is a technology and infrastructure provider — **we are not a bank, escrow agent, broker-dealer, money transmitter license holder in every jurisdiction, or fiduciary**, except to the limited extent expressly stated in these Terms or required by applicable law.
+
+## 2. Eligibility and Account Registration
+
+To use the Service you must:
+
+- Be at least 18 years old (or the age of legal majority in your jurisdiction) and have the legal capacity to enter into contracts;
+- Register for a Paycoinly account and provide accurate, current, and complete information;
+- Not be located in, or a resident of, any country or region subject to comprehensive sanctions administered by the United States, the European Union, the United Nations, or other applicable authorities, and not be listed on any restricted-party or denied-persons list;
+- Comply with all laws applicable to your business, including licensing, tax, consumer-protection, and anti-money-laundering ("**AML**") requirements in every jurisdiction where you operate or accept payments.
+
+You are responsible for maintaining the confidentiality of your login credentials, dashboard access, and **API Key** (see Section 5), and for all activity that occurs under your account. Notify us immediately at **[support email/contact form]** if you suspect unauthorized access.
+
+We may require additional verification (know-your-business, know-your-customer, or similar checks) before or during your use of the Service, particularly for withdrawal/payout functionality, and may suspend your account pending verification.
+
+## 3. Merchant Responsibilities
+
+As a Merchant integrating Paycoinly into your website, app, plugin, or point-of-sale system, you are solely responsible for:
+
+- **Your own customers ("Payers")** — including disclosures to them, your own terms of sale, refund policies, customer support, taxes, and compliance with consumer-protection and data-protection laws in the jurisdictions where your Payers are located;
+- **Configuration choices** in your dashboard, including but not limited to your selection under "How would you like to receive customer information?" (*"I Want To Know Who Paid," "My Customers Can Claim Their Money Back,"* or *"Okay Not To Have Payer Information"*), your Callback URL, withdrawal fee settings, and integration platform selection;
+- **Securing your webhook endpoints**, validating the `x-api-key` header on every inbound webhook request, and rejecting requests that do not match your API Key, as described in our documentation;
+- **The accuracy of data you submit** to our APIs, including price, currency, `localCurrency`, `metadata`, wallet addresses, `chainId`, `symbol`, `amount`, and user/customer identifiers;
+- **Determining the legality** of accepting the specific Digital Assets you configure (including memecoins, long-tail tokens, or tokenized real-world assets) in your jurisdiction and your Payers' jurisdictions;
+- Any use of the Paycoinly WordPress plugin, WooCommerce plugin, hooks, filters, or actions on your own hosting environment, including keeping such software up to date and secure.
+
+Paycoinly is not responsible for how you configure, deploy, or represent the Service to your Payers, or for disputes between you and your Payers.
+
+## 4. Payments, Settlement, and Withdrawals
+
+- **Non-reversibility.** Blockchain transactions are generally irreversible. Once a payment is confirmed on-chain, Paycoinly cannot reverse, cancel, or recall it. You are responsible for verifying wallet addresses, chain IDs, and asset symbols before initiating or accepting any transaction.
+- **Claimable balances and withdrawals.** Where you enable *"My Customers Can Claim Their Money Back"* or use the Withdrawal integration, Paycoinly (and/or your own backend, per your configuration) may hold a record of aggregated "claimable" balances on behalf of your Payers until a withdrawal is requested and processed. You are responsible for accurately tracking and reconciling claimable balances of your individual Payers in your own systems, as instructed in our documentation. The Withdrawal Request and Withdrawal Token Generation APIs are part of our **Premium** subscription tier and are unavailable on other plans.
+- **Multi-currency pricing.** Paycoinly allows you to price in one currency and display or collect in another (e.g., price in USD, collect in ETH). Exchange rates and price conversions are estimates based on third-party market data at the time of transaction and are not guaranteed; Paycoinly is not liable for rate fluctuations, slippage, or discrepancies between quoted and settled amounts.
+- **Network/gas fees.** In addition to Paycoinly's fee, transactions may incur third-party blockchain network ("gas") fees, which are outside our control and non-refundable.
+- **No investment or custody advice.** Nothing in the Service constitutes financial, investment, tax, or legal advice regarding any Digital Asset.
+
+## 5. API Keys, Security, and Integrations
+
+- You must keep your **API Key** confidential and must not share it with third parties. You are responsible for all actions taken using your API Key, whether authorized by you or not.{/* - If you believe your API Key has been compromised, rotate it immediately through your dashboard and notify us. */}
+- You are responsible for implementing the security practices described in our documentation, including validating the `x-api-key` header on webhooks and using HTTPS endpoints.
+- Our WordPress and WooCommerce plugins, hooks, filters, and actions are provided "as is" for use on infrastructure you control. We are not responsible for vulnerabilities introduced by your hosting environment, other plugins, or your customizations.
+- We may rate-limit, throttle, or suspend API access that we reasonably believe poses a security, fraud, or abuse risk.
+
+## 6. Fees
+
+Paycoinly charges a **1% transaction fee** on payments processed through the Service, applied at the rates and in the manner described in your dashboard and our published pricing at the time of the transaction. Additional fees may apply for:
+
+- Withdrawal features (configurable "Fee" setting in your withdrawal settings);
+- Third-party blockchain network fees, which are separate from and in addition to Paycoinly's fee.
+
+We may change our fees prospectively by posting updated pricing or notifying you through the dashboard, email, or these Terms. Continued use of the Service after a fee change takes effect constitutes acceptance of the new fees.
+
+## 7. Digital Asset and Blockchain Risk Disclosure
+
+**You acknowledge and accept the following risks inherent to Digital Assets and blockchain technology:**
+
+- Digital Assets (including stablecoins) can be extremely volatile and may lose some or all value;
+- "Stablecoins" are not guaranteed to maintain a stable value and may de-peg;
+- Memecoins, long-tail tokens, and tokenized real-world assets may have low liquidity, limited legal recourse, or uncertain regulatory status;
+- Blockchain networks may experience congestion, forks, outages, or consensus failures outside Paycoinly's control;
+- Transactions sent to an incorrect wallet address, unsupported chain, or wrong asset are typically unrecoverable;
+- Regulatory treatment of Digital Assets varies by jurisdiction and is evolving; future regulation could restrict or prohibit certain activities contemplated by the Service;
+- Smart contracts and blockchain infrastructure, whether operated by Paycoinly or third parties, may contain bugs or be subject to exploits.
+
+**Paycoinly does not guarantee the value, liquidity, or legal status of any Digital Asset supported or facilitated by the Service.**
+
+## 8. Compliance, Sanctions, and Prohibited Uses
+
+You must not use the Service, and must not permit your Payers to use the Service, to:
+
+- Violate any applicable law, including AML, counter-terrorist financing, sanctions, securities, gambling, or consumer-protection laws;
+- Process payments related to illegal goods or services, fraud, money laundering, terrorist financing, or sanctioned parties/jurisdictions;
+- Circumvent, disable, or interfere with security-related features of the Service, including API key validation;
+- Reverse-engineer, decompile, or attempt to extract source code from the Service, except as permitted by open-source licenses governing our plugins;
+- Misrepresent your identity, business, or the nature of goods/services sold;
+- Use the Service in a manner that could damage, disable, or impair Paycoinly's systems or those of other users.
+
+We may request documentation to verify compliance and may suspend or terminate accounts we reasonably believe violate this Section.
+
+## 9. Suspension and Termination
+
+We may suspend or terminate your access to the Service, in whole or in part, immediately and without prior notice, if we reasonably believe: (a) you have violated these Terms; (b) your use poses legal, regulatory, security, or fraud risk to Paycoinly, other users, or Payers; (c) required by law, regulator, or banking/network partner; or (d) you have not used the Service for an extended period. You may terminate your account at any time via your dashboard or by contacting us. Sections that by their nature should survive termination (including Sections 4, 6–8, 10–15) will survive.
+
+## 10. Intellectual Property
+
+Paycoinly and its licensors retain all right, title, and interest in the Service, including our software, APIs, documentation, trademarks, and branding. We grant you a limited, non-exclusive, non-transferable, revocable license to access and use the Service solely to accept and process payments for your own business in accordance with these Terms. You retain ownership of your own content, business data, and branding used in your integration.
+
+## 11. Disclaimers
+
+**THE SERVICE IS PROVIDED "AS IS" AND "AS AVAILABLE," WITHOUT WARRANTIES OF ANY KIND, WHETHER EXPRESS, IMPLIED, OR STATUTORY, INCLUDING WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, NON-INFRINGEMENT, OR THAT THE SERVICE WILL BE UNINTERRUPTED, SECURE, OR ERROR-FREE.** Paycoinly does not warrant the accuracy of currency conversion rates, the value of any Digital Asset, or the availability of any blockchain network at any given time.
+
+## 12. Limitation of Liability
+
+**TO THE MAXIMUM EXTENT PERMITTED BY LAW, PAYCOINLY AND ITS OFFICERS, EMPLOYEES, AND AFFILIATES WILL NOT BE LIABLE FOR ANY INDIRECT, INCIDENTAL, SPECIAL, CONSEQUENTIAL, OR PUNITIVE DAMAGES, OR ANY LOSS OF PROFITS, REVENUE, DATA, OR DIGITAL ASSETS, ARISING OUT OF OR RELATED TO YOUR USE OF THE SERVICE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGES.** Paycoinly's total aggregate liability for any claim arising out of or relating to these Terms or the Service will not exceed the greater of (a) the fees you paid to Paycoinly in the twelve (12) months preceding the event giving rise to the claim, or (b) $100 USD.
+
+Nothing in these Terms limits liability that cannot be limited under applicable law (e.g., liability for gross negligence, willful misconduct, or fraud, where such limitation is prohibited).
+
+## 13. Indemnification
+
+You agree to indemnify, defend, and hold harmless Paycoinly and its officers, employees, and affiliates from any claims, damages, liabilities, costs, and expenses (including reasonable attorneys' fees) arising from: (a) your use of the Service; (b) your violation of these Terms or applicable law; (c) disputes between you and your Payers; or (d) your integration, configuration, or use of our APIs, webhooks, or plugins.
+
+## 14. Changes to the Service and These Terms
+
+We may modify, suspend, or discontinue any part of the Service at any time. We may update these Terms from time to time; material changes will be notified via the dashboard, email, or by posting an updated version with a new "Last Updated" date. Continued use of the Service after changes take effect constitutes acceptance.
+
+{/* ## 15. Governing Law and Disputes
+
+These Terms are governed by the laws of **[governing jurisdiction placeholder]**, without regard to conflict-of-law principles. Any dispute arising out of or relating to these Terms or the Service will be resolved in the courts located in **[venue placeholder]**, and you consent to personal jurisdiction there, except where mandatory local consumer-protection law provides otherwise. */}
+
+## 15. General
+
+- **Entire Agreement.** These Terms, together with our Privacy Policy and any order forms or subscription terms, constitute the entire agreement between you and Paycoinly.
+- **Severability.** If any provision is found unenforceable, the remaining provisions remain in effect.
+- **No Waiver.** Failure to enforce a provision is not a waiver of our right to do so later.
+- **Assignment.** You may not assign these Terms without our written consent; we may assign these Terms in connection with a merger, acquisition, or sale of assets.
+- **Force Majeure.** Paycoinly is not liable for delays or failures caused by events beyond our reasonable control, including blockchain network outages, forks, or third-party infrastructure failures.
+
+## 16. Contact
+
+Questions about these Terms can be sent to:
+
+- **Contact form:** https://forms.zohopublic.com/techpayc1/form/ContactUs/formperma/kWsjKLqIPHDUpQa84UIGxq-Cnqc-S0AHjZRq_aGH-hI
+- **Email:** tech@paycoinly.xyz
+- **Website:** https://www.paycoinly.xyz
+
+{/* *This document is a template based on publicly available information about the Paycoinly service as of July 2026 and does not constitute legal advice. Paycoinly should have this document reviewed by qualified legal counsel familiar with money-transmission, virtual-asset, and data-protection law in each jurisdiction where it operates before publishing or relying on it.* */}

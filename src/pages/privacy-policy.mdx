@@ -1,0 +1,125 @@
+# Privacy Policy
+
+**Last Updated: July 21, 2026**
+
+This Privacy Policy explains how Paycoinly ("**Paycoinly**," "**we**," "**us**," or "**our**") collects, uses, discloses, and protects information in connection with our website (paycoinly.xyz), dashboard (app.paycoinly.xyz), APIs, webhooks, WordPress/WooCommerce plugins, and related services (collectively, the "**Service**").
+
+This Policy applies to two categories of people: **Merchants** (businesses/individuals who register a Paycoinly account to accept crypto payments) and **Payers** (the Merchant's own customers who pay through Paycoinly-powered checkouts, donation pages, POS terminals, or withdrawal flows). Where information about Payers is involved, Paycoinly often acts as a **service provider/processor** on behalf of the Merchant, who is generally the data controller for its own customers' information.
+
+{/* > **Placeholder Notice:** Bracketed items such as the legal entity name, registered address, data protection officer contact, and specific retention periods are placeholders. Paycoinly should complete these accurately, and confirm applicable legal bases under GDPR, CCPA/CPRA, and other relevant frameworks, before publishing this Policy. */}
+
+---
+
+## 1. Information We Collect
+
+### 1.1 Information from Merchants (account holders)
+When you register for Paycoinly or use the dashboard, we may collect:
+
+- **Account information:** name, business name, email address, password/authentication credentials, and contact details;
+- **Business/payment configuration:** your chosen settings (e.g., "How would you like to receive customer information?"), Callback URL, pricing, currency and local currency selections, withdrawal fee configuration, and platform integration type (e.g., None, WordPress, WooCommerce);
+- **API and security data:** your API Key and related authentication metadata (we recommend you never share your API Key with anyone; treat it as a credential);
+- **Wallet and settlement information:** blockchain wallet addresses, chain IDs, and asset symbols you configure for receiving settlements or issuing withdrawals;
+- **Transaction and dashboard activity:** payment records, analytics dashboard usage, subscription/billing tier (e.g., Premium), and support communications;
+- **Verification information:** if required, documentation to verify your identity or business for compliance purposes.
+
+### 1.2 Information from Payers (your customers)
+Depending on the Merchant's configuration (*"I Want To Know Who Paid," "My Customers Can Claim Their Money Back,"* or *"Okay Not To Have Payer Information"*), the following may be collected and passed through the Service:
+
+- **Payment details:** price, currency, `localCurrency`, transaction amount, asset symbol, and chain ID;
+- **Custom metadata:** any fields a Merchant chooses to pass via the `metadata` parameter when generating a payment token (e.g., order ID, customer email — determined entirely by the Merchant's own integration);
+- **Wallet addresses:** the blockchain address used to send a payment or receive a withdrawal;
+- **Claimable balance / user identifiers:** where withdrawal functionality is enabled, an identifier (`user`) used to track a Payer's claimable balance;
+- **On-chain transaction data:** transaction hashes and other data that is inherently recorded on public blockchains (see Section 6).
+
+Paycoinly does **not** control what personal data a Merchant chooses to submit via `metadata` or webhook payloads — Merchants are responsible for ensuring they have a lawful basis to collect and transmit any such data and for their own privacy disclosures to Payers.
+
+### 1.3 Information We Collect Automatically
+When you visit our website or dashboard, we (and our service providers) may automatically collect:
+
+- **Device and usage data:** IP address, browser type, operating system, referring URLs, pages viewed, and timestamps;
+- **Cookies and similar technologies:** used for authentication, session management, analytics, and security (see Section 7).
+
+## 2. How We Use Information
+
+We use the information described above to:
+
+- Provide, operate, and maintain the Service, including processing payments, generating payment/withdrawal tokens, and delivering webhook notifications;
+- Authenticate API requests and secure accounts (e.g., validating API Keys);
+- Calculate and collect our transaction fees and any subscription/Premium fees;
+- Provide multi-currency price conversion and display;
+- Detect, investigate, and prevent fraud, abuse, security incidents, and violations of our Terms of Service;
+- Comply with legal obligations, including AML/sanctions screening and responding to lawful requests from authorities;
+- Communicate with you about your account, transactions, updates to our policies, and support requests;
+- Improve and develop the Service, including our documentation, APIs, and plugins;
+- Analyze aggregate usage trends (e.g., via our analytics dashboard).
+
+We do not sell Payer personal data to third parties for their own independent marketing purposes.
+
+## 3. Legal Bases for Processing (where applicable, e.g., EEA/UK)
+
+Where data-protection laws such as the GDPR apply, we rely on one or more of the following legal bases: performance of a contract with you (Merchant account and Service delivery), our legitimate interests (e.g., fraud prevention, service security, and improvement), compliance with legal obligations (e.g., AML/sanctions law), and, where required, your consent (e.g., for certain cookies or marketing communications).
+
+## 4. How We Share Information
+
+We may share information with:
+
+- **Merchants:** if you are a Payer, the Merchant you transacted with receives information about your payment as configured in their integration (this is fundamental to how the Service operates);
+- **Service providers/subprocessors:** hosting providers, cloud infrastructure, analytics providers, customer-support tooling, and communication tools (e.g., our contact form provider), bound by confidentiality and data-protection obligations;
+- **Blockchain networks:** transaction data is broadcast to and recorded on public blockchains, which are outside Paycoinly's control (see Section 6);
+- **Professional advisors and regulators:** where necessary for legal, compliance, tax, or audit purposes;
+- **Law enforcement or authorities:** where required to comply with a legal obligation, court order, or governmental request, or to protect the rights, property, or safety of Paycoinly, our users, or the public;
+- **Successors:** in connection with a merger, acquisition, financing, or sale of assets, subject to standard confidentiality protections.
+
+We do not share your API Key with third parties, and we recommend you never share it either.
+
+## 5. Data Retention
+
+We retain Merchant account information for as long as your account is active and as needed to comply with legal, tax, accounting, and AML obligations thereafter. Transaction records, including those related to Payer payments and withdrawals, are retained for as long as necessary to provide the Service, resolve disputes, enforce agreements, and comply with applicable law. Certain data recorded on public blockchains cannot be deleted or modified once broadcast (see Section 6).
+
+## 6. Public Blockchain Data — Important Notice
+
+**Blockchain transactions are public and permanent.** When a payment, withdrawal, or transfer is broadcast to a supported network (e.g., Ethereum, Polygon, Arbitrum, BNB Smart Chain, Avalanche, or other future-supported chains), the wallet addresses involved, the amount, the asset, and the transaction hash are recorded on a distributed public ledger that Paycoinly does not control and cannot alter or erase. Anyone can view this information using a block explorer. Wallet addresses are pseudonymous but may potentially be linked to an individual's identity through other data (e.g., KYC records held by exchanges, or metadata a Merchant collects). Paycoinly is not responsible for the public, immutable nature of blockchain data, and cannot fulfill deletion requests with respect to data already recorded on-chain.
+
+## 7. Cookies and Similar Technologies
+
+Our website and dashboard use cookies and similar technologies to: keep you logged in, remember preferences, secure sessions, and understand aggregate usage (analytics). You can control cookies through your browser settings; disabling certain cookies may affect the functionality of the dashboard (e.g., staying logged in).
+
+## 8. International Data Transfers
+
+Paycoinly may process and store information in countries other than where you or your Payers are located, including jurisdictions where Paycoinly or its infrastructure providers operate. Where required, we use appropriate safeguards (such as standard contractual clauses or equivalent mechanisms) for cross-border transfers of personal data.
+
+## 9. Security
+
+We use technical and organizational measures designed to protect information, including encryption in transit (HTTPS), API Key–based authentication, and access controls. However, **no method of transmission or storage is completely secure**, and blockchain transactions in particular are irreversible once confirmed. You are responsible for safeguarding your account credentials, API Key, and any wallet private keys or seed phrases, which Paycoinly never has access to and never asks for.
+
+## 10. Your Rights
+
+Depending on your jurisdiction (e.g., GDPR in the EEA/UK, CCPA/CPRA in California, or other applicable laws), you may have rights to:
+
+- Access, correct, or request deletion of your personal data;
+- Object to or restrict certain processing;
+- Request a copy of your data in a portable format;
+- Withdraw consent where processing is based on consent;
+- Lodge a complaint with a supervisory authority.
+
+**If you are a Payer** and want to exercise rights over data collected during a transaction, please contact the Merchant you transacted with first, as they generally control what customer data is collected and how it's used; Paycoinly will assist Merchants in fulfilling such requests where we act as a processor.
+
+**If you are a Merchant**, you may exercise these rights by contacting us using the details in Section 13. Note that certain blockchain-recorded data cannot be deleted or altered (see Section 6).
+
+## 11. Children's Privacy
+
+The Service is not directed to individuals under 18, and we do not knowingly collect personal data from children. If we learn we have inadvertently collected such data, we will take steps to delete it.
+
+## 12. Changes to This Policy
+
+We may update this Privacy Policy from time to time. Material changes will be indicated by updating the "Last Updated" date above and, where appropriate, via notice on the dashboard or by email. Continued use of the Service after changes take effect constitutes acceptance of the updated Policy.
+
+## 13. Contact Us
+
+For questions about this Privacy Policy or to exercise your data-protection rights:
+
+- **Contact form:** https://forms.zohopublic.com/techpayc1/form/ContactUs/formperma/kWsjKLqIPHDUpQa84UIGxq-Cnqc-S0AHjZRq_aGH-hI
+- **Email:** tech@paycoinly.xyz
+- **Website:** https://www.paycoinly.xyz
+
+{/* *This document is a template based on publicly available information about the Paycoinly service as of July 2026 and does not constitute legal advice. Paycoinly should have this document reviewed by qualified legal counsel familiar with data-protection law (e.g., GDPR, CCPA/CPRA) and virtual-asset regulation in each jurisdiction where it operates before publishing or relying on it.* */}

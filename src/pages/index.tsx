@@ -182,6 +182,7 @@ const Page = () => (
         name="twitter:image"
         content="https://app.paycoinly.xyz/logo/dark.svg"
       />
+      <title>Paycoinly - Crypto Payment Gateway</title>
     </Head>
     <Layout description="PayCoinly is the crypto payment gateway for businesses. Accept crypto payments easily and securely.">
       <Main />
