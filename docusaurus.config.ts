@@ -15,10 +15,15 @@ const useCases = [
   { label: 'Withdrawal', to: '/docs/integrations/withdraw' }
 ]
 
+const legal = [
+  { label: 'Terms of Service', to: '/terms-of-service' },
+  { label: 'Privacy Policy', to: '/privacy-policy' }
+]
+
 const contactLink = 'https://forms.zohopublic.com/techpayc1/form/ContactUs/formperma/kWsjKLqIPHDUpQa84UIGxq-Cnqc-S0AHjZRq_aGH-hI'
 
 const config: Config = {
-  title: 'Paycoinly - Crypto Payment Gateway',
+  title: 'Paycoinly',
   tagline: 'Dinosaurs are cool',
   favicon: 'https://app.paycoinly.xyz/favicon.ico',
 
@@ -165,6 +170,12 @@ const config: Config = {
           items: useCases,
         },
         {
+          type: 'dropdown',
+          label: 'Legal',
+          position: 'left',
+          items: legal,
+        },
+        {
           to: contactLink,
           position: 'left',
           label: 'Contact Us',
@@ -199,6 +210,10 @@ const config: Config = {
         {
           title: 'Use Cases',
           items: useCases,
+        },
+        {
+          title: 'Legal',
+          items: legal,
         },
         {
           title: 'Company',
