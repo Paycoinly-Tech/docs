@@ -1,22 +1,22 @@
 ---
-sidebar_label: Withdrawl
+sidebar_label: Withdrawal
 ---
 
 import Premium from '@site/src/components/premium'
 
-# How Does Withdrawl Flow Work With Your System
+# How Does Withdrawal Flow Work With Your System
 
-The flow diagram provides a clear overview of how the withdrawal process integrates with your system and serves as the foundation for [Withdrawl Integration](/docs/integrations/withdraw) and [Withdrawl Integration Best Practices](/docs/best-practices/withdraw).
+The flow diagram provides a clear overview of how the withdrawal process integrates with your system and serves as the foundation for [Withdrawal Integration](/docs/integrations/withdraw) and [Withdrawal Integration Best Practices](/docs/best-practices/withdraw).
 
 Here are some elements showing in the diagram with links to detailed information.
 - [Callback URL](/docs/integrations/withdraw#add-a-webhook-to-your-backend)
 - [Best practices - step 1](/docs/best-practices/withdraw#step-1)
 - [Initiate withdrawal process](/docs/integrations/withdraw#initiate-withdrawal-process)
 - [Getting Customer Balances API](/docs/api-reference/get-customer-balance)
-- [Withdrawl Token Generation API](/docs/api-reference/withdraw-token) <Premium />
+- [Withdrawal Token Generation API](/docs/api-reference/withdraw-token) <Premium />
 - [Notify](/docs/integrations/withdraw#add-javascript-code)
 - [Process withdrawal request](/docs/integrations/withdraw#add-a-backend-endpoint-to-process-withdrawal-request)
-- [Withdrawl Request API](/docs/api-reference/withdraw-request) <Premium />
+- [Withdrawal Request API](/docs/api-reference/withdraw-request) <Premium />
 
 
 ```mermaid
@@ -25,7 +25,7 @@ sequenceDiagram
 
   actor user as User
   participant yourFrontend as Your Frontend
-  participant paycoinlyUI as Paycoinly Withdrawl UI
+  participant paycoinlyUI as Paycoinly Withdrawal UI
   participant backend as Your System
   participant paycoinly as Paycoinly
   
@@ -55,7 +55,7 @@ sequenceDiagram
   backend->>backend: Get user id hash
 
   rect rgb(191, 255, 234)
-  note right of backend: Withdrawl Token Generation API (👑 Premium)
+  note right of backend: Withdrawal Token Generation API (👑 Premium)
   backend->>paycoinly: user id hash, his/her balance
   paycoinly->>backend: withrawl token
   end
@@ -79,7 +79,7 @@ sequenceDiagram
   backend->>backend: Ensure the withdrawal amount does not exceed his/her balance
 
   rect rgb(217, 255, 191)
-  note right of backend: Withdrawl Request API (👑 Premium)
+  note right of backend: Withdrawal Request API (👑 Premium)
   backend->>paycoinly: withdraw data
   paycoinly->>backend: success
   end

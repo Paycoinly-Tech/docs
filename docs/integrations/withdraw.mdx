@@ -1,5 +1,5 @@
 ---
-sidebar_label: Withdrawl
+sidebar_label: Withdrawal
 toc_max_heading_level: 4
 ---
 
@@ -7,9 +7,9 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import Premium from '@site/src/components/premium'
 
-# Withdrawl Integration
+# Withdrawal Integration
 
-Withdrawl Integration enables developers to connect Paycoinly withdraw service to their platform, allowing your users to seamlessly withdraw their balances from Paycoinly. This feature requires<Premium /> subscrition.
+Withdrawal Integration enables developers to connect Paycoinly withdraw service to their platform, allowing your users to seamlessly withdraw their balances from Paycoinly. This feature requires<Premium /> subscrition.
 
 
 ### Prerequisites
@@ -73,7 +73,7 @@ You can see the meaning of each field in the below table.
 #### Implementation
 
 - Ensure the withdrawal amount (or value) in the payload does not exceed the user balance in your system.
-- After validation, send a withdrawal request to [Making Withdrawl Request API](/docs/api-reference/withdraw-request).
+- After validation, send a withdrawal request to [Making Withdrawal Request API](/docs/api-reference/withdraw-request).
 - If the response is successful (200), deduct the specified amount from the user's balance in your system.
 
 ### Initiate withdrawal process
@@ -88,14 +88,14 @@ The response includes token data like `chainId`, `symbol` which need to be used 
 
 #### Get withdrawal token
 
-Your backend should then call the [Withdrawl Token Generation API](/docs/api-reference/withdraw-token) using your user ID initiating the withdrawal, along with [his/her balance information](#add-a-webhook-to-your-backend) stored in your system.
+Your backend should then call the [Withdrawal Token Generation API](/docs/api-reference/withdraw-token) using your user ID initiating the withdrawal, along with [his/her balance information](#add-a-webhook-to-your-backend) stored in your system.
 You should use the same `chainId` and `symbol` as the one you retrieved in the [previous step](#check-customer-balances) when passing the balance information to the API.
-The API returns a withdrawal token, which is used to link and launch the Paycoinly Withdrawl UI in the [next step](#add-a-withdraw-ui-to-your-frontend).
+The API returns a withdrawal token, which is used to link and launch the Paycoinly Withdrawal UI in the [next step](#add-a-withdraw-ui-to-your-frontend).
 
 :::info
 It is the **responsibility of your system** to maintain and track the withdrawal eligibility of each user.
 Paycoinly does not store or manage individual user balances within your platform; it only maintains the aggregate balance of all your users combined.
-Therefore, when generating a withdrawal token, your backend must provide the user's available balance to [Withdrawl Token Generation API](/docs/api-reference/withdraw-token#body).
+Therefore, when generating a withdrawal token, your backend must provide the user's available balance to [Withdrawal Token Generation API](/docs/api-reference/withdraw-token#body).
 
 Also see [how to record users' withdrawable balance](#add-a-webhook-to-your-backend) in your system.
 :::
