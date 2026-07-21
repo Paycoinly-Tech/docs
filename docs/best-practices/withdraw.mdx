@@ -1,19 +1,19 @@
 ---
-sidebar_label: Withdrawl
+sidebar_label: Withdrawal
 ---
 
-# Best Practices for Withdrawl Integration
+# Best Practices for Withdrawal Integration
 
-This page describes a streamlined approach to align steps described in [Withdrawl Integration](/docs/integrations/withdraw) guide, without making your backend complicated going forth and back.
+This page describes a streamlined approach to align steps described in [Withdrawal Integration](/docs/integrations/withdraw) guide, without making your backend complicated going forth and back.
 
-Please see [How Does Withdrawl Flow Work With Your System](/docs/how-work/withdraw) to get more context of it.
+Please see [How Does Withdrawal Flow Work With Your System](/docs/how-work/withdraw) to get more context of it.
 
 ### Step 1
 
 Make a **GET** endpoint on your backend which has the following implementation in it:
 
-  - [Initiate withdrawl process](/docs/integrations/withdraw#initiate-withdrawl-process).
-  - Redirect to the following route using the withdrawl token from the previous step, which shows PayCoinly withdrawl UI.
+  - [Initiate withdrawal process](/docs/integrations/withdraw#initiate-withdrawal-process).
+  - Redirect to the following route using the withdrawal token from the previous step, which shows PayCoinly withdrawal UI.
 
 ```
   https://app.paycoinly.xyz/claim?token={token}
