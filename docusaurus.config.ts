@@ -64,6 +64,9 @@ const config: Config = {
     [
       'classic',
       {
+        sitemap: {
+          ignorePatterns: ['/blog/**'],
+        },
         docs: {
           sidebarPath: './sidebars.ts',
           // Please change this to your repo.
