@@ -38,6 +38,9 @@ const config: Config = {
   },
 
   plugins: ['docusaurus-plugin-sass'],
+  clientModules: [
+    'src/referral-cookie.js'
+  ],
 
   // Set the production url of your site here
   url: 'https://www.paycoinly.xyz',
