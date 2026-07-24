@@ -67,6 +67,10 @@ const config: Config = {
         sitemap: {
           ignorePatterns: ['/blog/**'],
         },
+        gtag: {
+          trackingID: 'G-TCFW6CMXKJ',
+          anonymizeIP: true,
+        },
         docs: {
           sidebarPath: './sidebars.ts',
           // Please change this to your repo.
