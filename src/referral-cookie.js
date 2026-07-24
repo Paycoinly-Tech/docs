@@ -1,4 +1,8 @@
 (function () {
+  if (typeof window === "undefined") {
+    return;
+  }
+
   const params = new URLSearchParams(window.location.search);
   const ref = params.get("ref");
 
