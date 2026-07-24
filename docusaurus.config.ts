@@ -38,6 +38,9 @@ const config: Config = {
   },
 
   plugins: ['docusaurus-plugin-sass'],
+  clientModules: [
+    'src/referral-cookie.js'
+  ],
 
   // Set the production url of your site here
   url: 'https://www.paycoinly.xyz',
@@ -66,6 +69,10 @@ const config: Config = {
       {
         sitemap: {
           ignorePatterns: ['/blog/**'],
+        },
+        gtag: {
+          trackingID: 'G-TCFW6CMXKJ',
+          anonymizeIP: true,
         },
         docs: {
           sidebarPath: './sidebars.ts',
