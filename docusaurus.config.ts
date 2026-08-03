@@ -37,7 +37,23 @@ const config: Config = {
     v4: true, // Improve compatibility with the upcoming Docusaurus v4
   },
 
-  plugins: ['docusaurus-plugin-sass'],
+  plugins: [
+    'docusaurus-plugin-sass',
+    'docusaurus-plugin-copy-page-button',
+    [
+      'docusaurus-plugin-llms',
+      {
+        includeOrder: [
+          'docs/intro.mdx',
+          'docs/how-work/*',
+          'docs/integrations/*',
+          'docs/api-reference/*',
+          'docs/best-practices/*',
+          'docs/apendix/*',
+        ]
+      }
+    ]
+  ],
   clientModules: [
     'src/referral-cookie.js'
   ],
@@ -154,7 +170,7 @@ const config: Config = {
       items: [
         {
           type: 'docSidebar',
-          sidebarId: 'tutorialSidebar',
+          sidebarId: 'docSidebar',
           position: 'left',
           label: 'Documentation',
         },
