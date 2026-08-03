@@ -40,7 +40,19 @@ const config: Config = {
   plugins: [
     'docusaurus-plugin-sass',
     'docusaurus-plugin-copy-page-button',
-    'docusaurus-plugin-llms'
+    [
+      'docusaurus-plugin-llms',
+      {
+        includeOrder: [
+          'docs/intro.mdx',
+          'docs/how-work/*',
+          'docs/integrations/*',
+          'docs/api-reference/*',
+          'docs/best-practices/*',
+          'docs/apendix/*',
+        ]
+      }
+    ]
   ],
   clientModules: [
     'src/referral-cookie.js'
