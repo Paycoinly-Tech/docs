@@ -35,7 +35,7 @@ const Main = () => (
               className="button button--warning"
               onClick={() =>
                 window.open(
-                  "https://app.paycoinly.xyz/pay?token=93LxFW57Ud6JrPFlOu48pXWxvJY9kdFYkLg980ZzAyVZVqh2fiYcah89zTOceSl19Bv+PZCToNyPTkqIgjKw/yD7cMFiShiR2LY7497DFNKGvhnqJMrRbxYZW9Zommrb9oOjDR0Sk8raBLjYmNkKng==",
+                  "https://app.paycoinly.xyz/pay?token=VLJ83c98qON5Fp0lKihfS4dhG65LdyrMr0DKKtgl9iFaiQ77Aa8Vx7sqON3J0fD78Qdevk6pjTt5I0shuWK2474N+FvTE4YiT4JUzbxUeBv/V+lCua3DJBQgu5NU2AwO+7v68Gzc51j0sJ1p8fHzEQ==",
                   "Pay with PayCoinly",
                   "width=800,height=550,left=200,top=100",
                 )
@@ -48,7 +48,7 @@ const Main = () => (
               className="button button--warning"
               onClick={() =>
                 window.open(
-                  "https://app.paycoinly.xyz/pay?token=EzsxqVGwGY56uCwPY2ywiIyqechkbWLByYz504gIK3RDcgDgWb1uZXkxitIbtmsrvPgZG+KOVcdBojZvb+q4e4eJDkvlK40KK6tQ8Em/UFFpsLb1GmPjlkR8+eD8sj96tacxzEU6pi/VFX/TehD/Zg==",
+                  "https://app.paycoinly.xyz/pay?token=3xpNPfcXdLkSIFUzti6e8+JnXWqfw+Ek5CLQjbplnjs2YGrJFwzkvSj6nHheyz6jKoxbiXNze6U+/eQ6oMVOBFCGZ4klkB80CjVOO7Wo3gTZnk6J0kxT6V05eV6BnkvQ3wafK322stLNegXmqKGnLw==",
                   "Pay with PayCoinly",
                   "width=800,height=550,left=200,top=100",
                 )
@@ -61,7 +61,7 @@ const Main = () => (
               className="button button--warning"
               onClick={() =>
                 window.open(
-                  "https://app.paycoinly.xyz/pay?token=SG6vpBpcvtxryYbzTaaVyYurofbVY7xsehofZXDOeBu3/BsLj5Y2E+mqzBd2MmOFjLFiL9QzPRxaCXWnmFCm3QYo090TdvFd/9iewW+9NyrTMJTjK0KADIb6ObdGMZoF3BUX7bl8m5Sr0bYf43EImA==",
+                  "https://app.paycoinly.xyz/pay?token=wxt2sznx79lTOhY4n2aDBk15TVpOao+s1PJuCQtCf+zhb2CzIs+HSUxbi8gKhxYbDzi87zxvBRqYAgcTgaDziaHIoUdjhvHDavDCWze22n7Rei1xySNMYZTTbfvTzA750JdHLEwN5P3bhQuvLVkulw==",
                   "Pay with PayCoinly",
                   "width=800,height=550,left=200,top=100",
                 )
