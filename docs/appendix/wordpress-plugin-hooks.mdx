@@ -98,7 +98,7 @@ The Javascript code is injected into the browser page by [paycoinly](#paycoinly)
 
 ```php title='Example'
 add_filter('paycoinly_on_complete', function () {
-	return <<<EOT
+  return <<<EOT
 // define your custom JS code here
 console.log(event.data.payload);
 EOT;
