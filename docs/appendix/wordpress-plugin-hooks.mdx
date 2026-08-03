@@ -17,7 +17,7 @@ The Paycoinly plugin provides several filters, actions and shortcode which allow
 #### paycoinly_before_handle_wc_payment
 
 This action is triggered just before your platform records customer's Paycoinly payment in the callback endpoint.
-It is used for Woocommerce payments only.
+It is used for [Woocommerce payments](#glossary) only.
 
 ```php
 add_action('paycoinly_before_handle_wc_payment', 'before_handle_wc_payment');
@@ -38,7 +38,7 @@ function before_handle_wc_payment($payload) {
 #### paycoinly_handle_payment
 
 This action is triggered just after your platform records customer's Paycoinly payment in the callback endpoint.
-It is used for both Wordpress and Woocommerce payments.
+It is used for both [Wordpress and Woocommerce payments](#glossary).
 
 ```php
 add_action('paycoinly_handle_payment', 'after_handle_payment');
@@ -67,7 +67,7 @@ function after_handle_payment($payload, $mode) {
 #### paycoinly_order_price
 
 This filter is used to calculate price of the order before Paycoinly shows payment UI to your customers.
-It is used for Wordpress payments only.
+It is used for [Wordpress payments](#glossary) only.
 Please refer to [Wordpress Integration](/docs/integrations/wordpress#place-paycoinly-ui) page to get more understanding and workflow of it.
 
 ```php title='Example'
@@ -89,6 +89,22 @@ function get_order_price($order_id) {
 | -------- | ------ | ---------------------------------------------------------------------------------------- |
 | order_id | string | Data on which you want to calculate the price based. `order_id` is passed from shortcode |
 
+#### paycoinly_on_complete
+
+This filter is used to define the custom Javascript code which will be triggered on [payment success](/docs/appendix/success-event) in frontend.
+It is used for [Wordpress payments](#glossary) only.
+
+The Javascript code is injected into the browser page by [paycoinly](#paycoinly) shortcode. You can use `event.data.payload` directly in the Javascript code to access the [payment payload data](/docs/appendix/success-event).
+
+```php title='Example'
+add_filter('paycoinly_on_complete', function () {
+	return <<<EOT
+// define your custom JS code here
+console.log(event.data.payload);
+EOT;
+});
+```
+
 ### Shortcodes
 
 #### paycoinly
@@ -96,23 +112,22 @@ function get_order_price($order_id) {
 You can place Paycoinly UI using `paycoinly` shortcode in any page.
 Here you can see arg details of the short code. All args are optional.
 
-| Arg         | Default                                                                     | Description                                                                                                   |
-| ----------- | --------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------- |
-| order_id    | Empty string                                                                | The price is determined by `order_id`                                                                         |
-| on_complete | `console.log(event.data.payload);`                                          | Javascript code which will be triggered on payment success in frontend. **Premium subscription is required.** |
-| redirect    | Empty string                                                                | Paycoinly payment UI will redirect to this URL after completion                                               |
-| html        | `<img src='https://app.paycoinly.xyz/logo/dark.svg' style='width: 5em;' />` | Your custom HTML to render inside the button                                                                  |
-| class       | Empty string                                                                | Your custom class name to render the button with                                                              |
-| style       | Empty string                                                                | Your custom style to render the button with                                                                   |
+| Arg      | Default                                                                     | Description                                                     |
+| -------- | --------------------------------------------------------------------------- | --------------------------------------------------------------- |
+| order_id | Empty string                                                                | The price is determined by `order_id`                           |
+| redirect | Empty string                                                                | Paycoinly payment UI will redirect to this URL after completion |
+| html     | `<img src='https://app.paycoinly.xyz/logo/dark.svg' style='width: 5em;' />` | Your custom HTML to render inside the button                    |
+| class    | Empty string                                                                | Your custom class name to render the button with                |
+| style    | Empty string                                                                | Your custom style to render the button with                     |
 
 ##### Success handler and redirection
 
-By default, the Paycoinly UI launches the payment UI in a popup when triggered, and `on_complete` handler is executed on payment completion if you are subscribed to the **Premium** plan.
+By default, the Paycoinly UI launches the payment UI in a popup when triggered, and the Javascript snippet specified by [`paycoinly_on_complete`](#paycoinly_on_complete) filter is executed on [payment completion](/docs/appendix/success-event) if you are subscribed to the **Premium** plan.
 
 
 However, if the `redirect` argument is provided, the payment flow is handled via a full-page redirect instead.
 Upon successful completion of the payment, the user is then redirected to the URL specified in the `redirect` argument.
-Flow specified by `on_complete` argument is ignored in this case.
+The Javascript snippet specified by [`paycoinly_on_complete`](#paycoinly_on_complete) filter is ignored in this case.
 
 ##### Price Determination
 
