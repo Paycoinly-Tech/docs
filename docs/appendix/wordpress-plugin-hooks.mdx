@@ -94,7 +94,7 @@ function get_order_price($order_id) {
 This filter is used to define the custom Javascript code which will be triggered on [payment success](/docs/appendix/success-event) in frontend.
 It is used for [Wordpress payments](#glossary) only.
 
-The Javascript code is injected into the browser page by [paycoinly](#paycoinly) shortcode. You can use `event.data.payload` directly in the Javascript code to access the [payment payload data](/docs/appendix/success-event).
+The Javascript code is injected into the browser page by [`paycoinly`](#paycoinly) shortcode. You can use `event.data.payload` directly in the Javascript code to access the [payment payload data](/docs/appendix/success-event).
 
 ```php title='Example'
 add_filter('paycoinly_on_complete', function () {

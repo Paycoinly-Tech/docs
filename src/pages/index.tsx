@@ -19,11 +19,11 @@ const Main = () => (
         <div className="button-box">
           <a
             href="https://app.paycoinly.xyz/register"
-            className="button button--primary"
+            className="button button--lg button--primary"
           >
             Register
           </a>
-          <a href="/docs/intro" className="button button--info">
+          <a href="/docs/intro" className="button button--lg button--info">
             Open Documentation
           </a>
         </div>
@@ -32,7 +32,7 @@ const Main = () => (
           <p>☕ Buy me a coffee</p>
           <div className="button-box">
             <button
-              className="button button--warning"
+              className="button button--lg button--warning"
               onClick={() =>
                 window.open(
                   "https://app.paycoinly.xyz/pay?token=VLJ83c98qON5Fp0lKihfS4dhG65LdyrMr0DKKtgl9iFaiQ77Aa8Vx7sqON3J0fD78Qdevk6pjTt5I0shuWK2474N+FvTE4YiT4JUzbxUeBv/V+lCua3DJBQgu5NU2AwO+7v68Gzc51j0sJ1p8fHzEQ==",
@@ -45,7 +45,7 @@ const Main = () => (
             </button>
 
             <button
-              className="button button--warning"
+              className="button button--lg button--warning"
               onClick={() =>
                 window.open(
                   "https://app.paycoinly.xyz/pay?token=3xpNPfcXdLkSIFUzti6e8+JnXWqfw+Ek5CLQjbplnjs2YGrJFwzkvSj6nHheyz6jKoxbiXNze6U+/eQ6oMVOBFCGZ4klkB80CjVOO7Wo3gTZnk6J0kxT6V05eV6BnkvQ3wafK322stLNegXmqKGnLw==",
@@ -58,7 +58,7 @@ const Main = () => (
             </button>
 
             <button
-              className="button button--warning"
+              className="button button--lg button--warning"
               onClick={() =>
                 window.open(
                   "https://app.paycoinly.xyz/pay?token=wxt2sznx79lTOhY4n2aDBk15TVpOao+s1PJuCQtCf+zhb2CzIs+HSUxbi8gKhxYbDzi87zxvBRqYAgcTgaDziaHIoUdjhvHDavDCWze22n7Rei1xySNMYZTTbfvTzA750JdHLEwN5P3bhQuvLVkulw==",
@@ -133,7 +133,7 @@ const Main = () => (
     </section>
     <section className="crypto-ready text--center wide theme-background">
       <Heading as="h3">YOUR BUSINESS, CRYPTO-READY TODAY</Heading>
-      <a href="/docs/intro" className="button button--info">
+      <a href="/docs/intro" className="button button--info button--lg">
         Open Documentation
       </a>
     </section>
