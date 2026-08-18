@@ -248,6 +248,10 @@ const config: Config = {
               label: 'Contact Us',
               to: contactLink,
             },
+            {
+              label: 'We are hiring',
+              to: '/jobs',
+            },
             // {
             //   label: 'GitHub',
             //   href: 'https://github.com/facebook/docusaurus',
