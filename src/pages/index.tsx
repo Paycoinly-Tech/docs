@@ -71,6 +71,14 @@ const Main = () => (
             </button>
           </div>
         </div>
+        <div className='how-works'>
+          <a
+            href="/jobs"
+            className="button button--lg button--danger"
+          >
+            WE ARE HIRING
+          </a>
+        </div>
       </div>
       <div className="col col--6 img-container">
         <img className="img-frame" src={imgDashboard} alt="PayCoinly Logo" />
