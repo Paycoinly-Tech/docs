@@ -26,12 +26,12 @@ When you register for Paycoinly or use the dashboard, we may collect:
 Depending on the Merchant's configuration (*"I Want To Know Who Paid," "My Customers Can Claim Their Money Back,"* or *"Okay Not To Have Payer Information"*), the following may be collected and passed through the Service:
 
 - **Payment details:** price, currency, `localCurrency`, transaction amount, asset symbol, and chain ID;
-- **Custom metadata:** any fields a Merchant chooses to pass via the `metadata` parameter when generating a payment token (e.g., order ID, customer email — determined entirely by the Merchant's own integration);
+- **Custom metadata:** any fields a Merchant chooses to pass via the `metadata` parameter when generating a payment token (e.g., order ID, customer email is determined entirely by the Merchant's own integration);
 - **Wallet addresses:** the blockchain address used to send a payment or receive a withdrawal;
 - **Claimable balance / user identifiers:** where withdrawal functionality is enabled, an identifier (`user`) used to track a Payer's claimable balance;
 - **On-chain transaction data:** transaction hashes and other data that is inherently recorded on public blockchains (see Section 6).
 
-Paycoinly does **not** control what personal data a Merchant chooses to submit via `metadata` or webhook payloads — Merchants are responsible for ensuring they have a lawful basis to collect and transmit any such data and for their own privacy disclosures to Payers.
+Paycoinly does **not** control what personal data a Merchant chooses to submit via `metadata` or webhook payloads. Merchants are responsible for ensuring they have a lawful basis to collect and transmit any such data and for their own privacy disclosures to Payers.
 
 ### 1.3 Information We Collect Automatically
 When you visit our website or dashboard, we (and our service providers) may automatically collect:
@@ -76,7 +76,7 @@ We do not share your API Key with third parties, and we recommend you never shar
 
 We retain Merchant account information for as long as your account is active and as needed to comply with legal, tax, accounting, and AML obligations thereafter. Transaction records, including those related to Payer payments and withdrawals, are retained for as long as necessary to provide the Service, resolve disputes, enforce agreements, and comply with applicable law. Certain data recorded on public blockchains cannot be deleted or modified once broadcast (see Section 6).
 
-## 6. Public Blockchain Data — Important Notice
+## 6. Public Blockchain Data: Important Notice
 
 **Blockchain transactions are public and permanent.** When a payment, withdrawal, or transfer is broadcast to a supported network (e.g., Ethereum, Polygon, Arbitrum, BNB Smart Chain, Avalanche, or other future-supported chains), the wallet addresses involved, the amount, the asset, and the transaction hash are recorded on a distributed public ledger that Paycoinly does not control and cannot alter or erase. Anyone can view this information using a block explorer. Wallet addresses are pseudonymous but may potentially be linked to an individual's identity through other data (e.g., KYC records held by exchanges, or metadata a Merchant collects). Paycoinly is not responsible for the public, immutable nature of blockchain data, and cannot fulfill deletion requests with respect to data already recorded on-chain.
 
