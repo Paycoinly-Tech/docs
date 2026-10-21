@@ -252,6 +252,10 @@ const config: Config = {
               label: 'We are hiring',
               to: '/jobs',
             },
+             {
+              label: 'Github',
+              to: 'https://github.com/paycoinly-tech',
+            },
             // {
             //   label: 'GitHub',
             //   href: 'https://github.com/facebook/docusaurus',
